@@ -1,0 +1,549 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Work+Sans:wght@100;300;400;600;800&display=swap');
+*{
+    box-sizing: border-box;
+    font-family: 'Work Sans';
+    margin: 0;
+    padding: 0;
+}
+html{
+
+    /* me permite deslizar cuando hago clic en los links del menu */
+    scroll-behavior: smooth;
+}
+
+/* SECCION I N I C I O */
+.inicio{
+    background: linear-gradient(to top, rgba(30,35,38,.8), rgba(30,35,38,1)),
+    url(img/agru.jpeg);
+    background-size: cover;
+    height: 100vh;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+.inicio .contenido-banner{
+    padding-top: 56px; /* Ajusta este valor si es necesario, 100px es un buen punto de partida */
+    max-width: 350px;
+    margin: auto;
+    text-align: center;
+    border-radius: 40px;
+}
+.wrapper,
+.wrapper .img-area {
+  background: #80b9e5;
+  box-shadow: -3px -3px 7px rgb(244, 177, 177), 3px 3px 5px #8585e0;
+}
+.wrapper {
+  position: relative;
+  width: 350px;
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+}
+.wrapper .img-area {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-area .inner-area {
+  height: calc(100% - 25px);
+  width: calc(100% - 25px);
+  border-radius: 50%;
+}
+.inner-area img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.wrapper #name {
+  font-size: 23px;
+  font-weight: 500;
+  color: #31344b;
+  margin: 10px 0 5px 0;
+}
+.wrapper #btn {
+  position: relative;
+  width: 150px;
+  border: none;
+  outline: none;
+  padding: 5px;
+  color: #31344b;
+  font-size: 13px;
+  font-weight: 450;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 4;
+  margin: 10px 0 15px 0;
+  background-color: #ecf0f3;
+  box-shadow: -3px -3px 7px rgb(233, 140, 140), 3px 3px 5px #adadec;
+}
+.wrapper .info {
+  color: #44476a;
+  font-size: 14px;
+  font-weight: 500;
+  color: #31344b;
+  text-align: left;
+}
+.info p {
+  margin-bottom: 20px;
+}
+.Novedades{
+  /*  background-color: #1e2326;
+    color: #fff;
+    padding: 50px 20px;*/
+     padding-top: 56px; /* Añadido o ajustado */
+    background-color: #121212;
+    color: #fff;
+}
+.Novedades .contenido-seccion{
+    max-width: 1100px;
+    margin: auto;
+     padding: 0 20px;
+}
+.Novedades h2{
+    font-size: 48px;
+    font-family: 'Righteous';
+    text-align: center;
+    padding: 20px 0;
+
+}
+.Novedades .contenido-seccion p{
+    font: 18px;
+    line-height: 22px;
+    margin-bottom: 20px;
+}
+.Novedades .contenido-seccion p span{
+    color: #1CB698;
+    font-weight: bold;
+}
+.Novedades .fila{
+    display: flex;
+}
+.Novedades .fila .col
+{
+    width: 50%;
+}
+.Novedades .fila .col h3{
+    font-size: 28px;
+    font-family: 'Righteous';
+    margin-bottom: 25px;
+}
+.Novedades .fila .col ul{
+    list-style: none;
+}
+.Novedades .fila .col ul li{
+    margin: 12px 0;
+}
+.Novedades .fila .col ul li strong{
+    display: inline-block;
+    color: #1CB698;
+    width: 130px;
+}
+.Novedades .fila .col ul li span{
+    background-color: #1CB698;
+    padding: 3px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.Novedades .fila .col .contenedor-intereses{
+    display: flex;
+    flex-wrap: wrap;
+}
+.Novedades .fila .col .contenedor-intereses .interes{
+    width: 100px;
+    height: 100px;
+    background-color: #252A2E;
+    border-radius: 10px;
+    margin: 0 15px 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+}.Novedades .fila .col .contenedor-intereses .interes:hover{
+    background-color: #1CB698;
+}
+.Novedades .fila .col .contenedor-intereses .interes i{
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.Novedades button{
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid #fff;
+    width: fit-content;
+    display: block;
+    margin: 20px auto;
+    padding: 10px 22px;
+    font-size: 16px;
+    color: #fff;
+    position: relative;
+    z-index: 10;
+}
+.Novedades button .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #1CB698;
+    z-index: -1;
+    transition: 1s;
+}
+.Novedades button:hover .overlay{
+    width: 100%;
+}
+/* SECCION CURRICULUM */
+.Calculadora{
+      padding-top: 56px; /* Añadido o ajustado */
+     background-color: #1e2326;
+     color: #fff;
+ 
+    body {
+      font-family: Arial, sans-serif;
+       background-color: #FFFFFF;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #1e2326;
+      border-radius: 10px;
+    }
+
+    h2 {
+       color: #FFFFFF;
+    }
+
+    label {
+      display: inline-block;
+      width: 150px;
+      text-align: right;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 200px;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    select {
+      width: 220px;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    .result-label {
+      color: #FFFFFF;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .result-value {
+      background-color: #FFFFFF;
+      border: none;
+      width: 200px;
+      padding: 5px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    button {
+      background-color: #216297;
+      color: #FFFFFF;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  
+}
+/* SECCION PORTFOLIO */
+/* ... (otros estilos existentes) ... */
+
+/* SECCION ESCALA */
+.Escala {
+    padding-top: 56px; /* Ajusta este valor si es necesario para el espacio del menú */
+    background-color: #121212;
+    color: #fff;
+}
+
+/* Contenedor general para todas las tablas dentro de la sección Escala */
+.Escala .contenido-seccion {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.Escala h2 {
+    font-size: 48px;
+    font-family: 'Righteous';
+    text-align: center;
+    padding: 20px 0;
+    color: #fff; /* Puedes cambiar a #07be72 si quieres el título verde */
+}
+
+/* Estilos comunes para los contenedores de tabla */
+.tabla-escala-container,
+.tabla-antiguedad-vigilador-general-container { /* Eliminamos .tabla-antiguedad-container ya que esa tabla se eliminó */
+    overflow-x: auto; /* Asegura el scroll horizontal si es necesario */
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #2e353b; /* Fondo para el contenedor de la tabla */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenedor para el scroll interno de las tablas */
+.tabla-scroll {
+    overflow-x: auto;
+}
+
+/* Estilos comunes para todas las tablas */
+.Escala table {
+    width: 100%;
+    min-width: 900px; /* Ancho mínimo para forzar el scroll horizontal */
+    border-collapse: collapse;
+    margin-bottom: 20px; /* Espacio debajo de la tabla */
+    color: #fff;
+    font-size: 14px;
+}
+
+.Escala th, .Escala td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+}
+
+.Escala thead th {
+    background-color: #025180; /* Azul de tu header */
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Estilos de zebra para las filas (colores alternos) */
+.Escala tbody tr:nth-child(odd) {
+    background-color: #1e2326; /* Gris oscuro */
+}
+
+.Escala tbody tr:nth-child(even) {
+    background-color: #252A2E; /* Gris un poco más claro */
+}
+
+/* ******************************************* */
+/* EFECTO HOVER PARA LAS FILAS DE TODAS LAS TABLAS */
+/* ******************************************* */
+.tabla-escala-container tbody tr:hover,
+.tabla-antiguedad-vigilador-general-container tbody tr:hover {
+    background-color: #f83e38; /* Color verde que deseas al pasar el cursor */
+    color: #000; /* Color de texto negro para mejor contraste con el verde */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+/* Info adicional - Bloque de textos informativos */
+.info-adicional {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #2e353b;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.info-adicional h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    color: #d4dfda; /* Color verde para los títulos de la info adicional */
+}
+
+/* Título específico para la tabla de Vigilador General */
+.tabla-antiguedad-vigilador-general-container h2 {
+    font-size: 28px;
+    font-family: 'Righteous';
+    text-align: center;
+    color: #ececec;
+    margin-bottom: 20px;
+}
+
+/* MEDIA QUERIES para responsividad (revisados) */
+@media screen and (max-width:980px){
+    nav{
+        display: none;
+    }
+    .nav-responsive{
+        display: block;
+    }
+    nav.responsive{
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 75px; /* Ajustado para que quede debajo del header en móvil */
+        background-color: #252A2E;
+        width: 180px;
+    }
+    nav.responsive ul{
+        display: block !important;
+    }
+    nav.responsive ul li{
+        border-bottom: 1px solid #fff;
+        padding: 10px 0;
+    }
+    /* Ajustes para padding-top en secciones principales en móvil */
+    .Escala, .Novedades, .Calculadora, .nosotros, .inicio {
+        padding-top: 90px; /* Menor padding para pantallas más pequeñas */
+    }
+    .Escala table,
+    .tabla-antiguedad-vigilador-general-container table {
+        min-width: 700px; /* Ajusta este valor si las tablas aún son demasiado anchas en tablets */
+    }
+}
+
+@media screen and (max-width:700px){
+    /* Ajustes adicionales para móviles pequeños */
+    .Escala h2 {
+        font-size: 32px; /* Reducir tamaño de título principal */
+    }
+    .Escala th,
+    .Escala td,
+    .tabla-antiguedad-vigilador-general-container th,
+    .tabla-antiguedad-vigilador-general-container td {
+        padding: 8px 10px; /* Padding más pequeño */
+        font-size: 12px; /* Fuente más pequeña */
+    }
+    .Escala table,
+    .tabla-antiguedad-vigilador-general-container table {
+        min-width: 600px; /* Ajusta si sigue siendo muy ancha */
+    }
+    .info-adicional h3 {
+        font-size: 16px;
+    }
+    .tabla-antiguedad-vigilador-general-container h2 {
+        font-size: 24px;
+    }
+}
+
+/* Asegura que el color de fondo del body sea consistente */
+body {
+    background-color: #121212;
+    color: #fff;
+    /* otras propiedades del body si las tienes */
+}
+
+
+/* Y si tienes un media query para 980px, revisa también */
+@media screen and (max-width:980px){
+    /* ... (otros estilos responsivos) ... */
+    .Escala, .Novedades, .Calculadora, .nosotros, .inicio {
+        padding-top: 90px; /* Asegúrate que el padding también esté aquí */
+    }
+}
+
+/* SECCION NOSOTROS */
+.nosotros{
+     padding-top: 56px; /* Añadido o ajustado */
+    background-color: #121212; 
+    color: #fff;
+    text-align: center;
+}
+/* Esto ya lo tenías, pero es bueno asegurarlo */
+html {
+    /* me permite deslizar cuando hago clic en los links del menu */
+    scroll-behavior: smooth;
+    background-color: #121212; /* Añade o asegura este color de fondo para todo el html */
+}
+
+body {
+    /* Esto ya lo tenías, asegúrate que no tenga un background-color blanco */
+    background-color: #121212; /* Añade o asegura este color de fondo para todo el body */
+    color: #fff; /* Asegura que el texto por defecto sea blanco */
+    /* ... otros estilos del body ... */
+}
+.nosotros .contenido-seccion{
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+}
+.nosotros h2{
+    font-size: 48px;
+    font-family: 'Righteous';
+    text-align: center;
+    padding: 20px 0;
+    color: #d3dbd8; /* Color verde de tu logo */
+}
+.nosotros p{
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 20px;
+    text-align: justify; /* Texto justificado para una mejor lectura */
+}
+/* Opcional: para el primer párrafo, si quieres un énfasis */
+.nosotros p span{
+    color: #e1ebe9;
+    font-weight: bold;
+}
+
+/* Para dispositivos más pequeños, para que el padding y texto se ajusten */
+@media screen and (max-width:700px){}
+    .nosotros .contenido-seccion{
+        padding: 0 10px;
+    }
+    .nosotros h2{
+        font-size: 38px;
+    }
+
+
+@media screen and (max-width:700px){
+    .sobremi .fila{
+        display: block;
+    }
+    .sobremi .fila .col{
+        width: fit-content;
+    }
+    .curriculum .fila{
+        display: block;
+    }
+    .curriculum .fila .col{
+        width: 90%;
+    }
+    .curriculum .fila .derecha{
+        margin-left: 20px;
+    }
+
+    .portfolio .galeria{
+        display: block;
+        width: 100%;
+    }
+    .portfolio .galeria .proyecto{
+        max-width: 100%;
+    }
+    .portfolio .galeria .proyecto img{
+        width: 100%;
+    }
+    .contacto .fila{
+        display: block;
+    }
+    .contacto .fila .col{
+        width: 100%;
+    }
+}
