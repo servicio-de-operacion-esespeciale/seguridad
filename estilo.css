@@ -465,17 +465,18 @@ body {
 }
 
 
-/* --- SECCIÓN ESCALA --- */
+/* --- SECCIÓN ESCALA MEJORADA --- */
 .Escala {
     padding-top: 120px;
-    background-color: #121212;
+    background: linear-gradient(135deg, #eb3444 0%, #eb1717 100%);
+    min-height: 100vh;
     color: #fff;
 }
 
 .Escala .contenido-seccion {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: auto;
-    padding: 0 20px;
+    padding: 20px;
 }
 
 .Escala h2 {
@@ -484,83 +485,181 @@ body {
     text-align: center;
     padding: 20px 0;
     color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
 }
 
+/* Contenedor de pestañas moderno */
+.Escala .tab-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 30px;
+}
+
+.Escala .tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.Escala .tab {
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.Escala .tab.active {
+    background: linear-gradient(135deg, #ec344c 0%, #764ba2 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(235, 55, 42, 0.4);
+}
+
+.Escala .tab:hover:not(.active) {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.Escala .tab-content {
+    display: none;
+}
+
+.Escala .tab-content.active {
+    display: block;
+}
+
+/* Contenedor de tablas modernizado */
 .tabla-escala-container,
 .tabla-antiguedad-vigilador-general-container {
-    overflow-x: auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    background-color: #2e353b;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 30px 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 .tabla-scroll {
     overflow-x: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .Escala table {
     width: 100%;
-    min-width: 900px;
+    min-width: 1000px;
     border-collapse: collapse;
     margin-bottom: 20px;
-    color: #fff;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
     font-size: 14px;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
-.Escala th, .Escala td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #444;
-    white-space: nowrap;
-}
-
-.Escala thead th {
-    background-color: #025180;
-    color: #fff;
-    font-weight: bold;
+.Escala th {
+    background: linear-gradient(135deg, #eb2b2b 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 12px;
+    text-align: center;
+    font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #5a67d8;
 }
 
-.Escala tbody tr:nth-child(odd) {
-    background-color: #1e2326;
+.Escala td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .Escala tbody tr:nth-child(even) {
-    background-color: #252A2E;
+    background-color: rgba(102, 126, 234, 0.05);
 }
 
-.tabla-escala-container tbody tr:hover,
-.tabla-antiguedad-vigilador-general-container tbody tr:hover {
-    background-color: #1CB698;
-    color: #000;
-    transition: background-color 0.3s ease, color 0.3s ease;
+.Escala tbody tr:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+    transform: scale(1.001);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Información adicional modernizada */
 .info-adicional {
-    margin-top: 40px;
-    padding: 20px;
-    background-color: #2e353b;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    color: #fff;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+    backdrop-filter: blur(15px);
+    color: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin: 30px 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 .info-adicional h3 {
     font-size: 18px;
     margin-bottom: 15px;
-    line-height: 1.5;
-    color: #07be72;
+    line-height: 1.6;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .tabla-antiguedad-vigilador-general-container h2 {
     font-size: 28px;
     font-family: 'Righteous', cursive;
     text-align: center;
-    color: #07be72;
+    color: #fff;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Sección aeroportuario */
+.aeroportuario-section {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 30px 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.aeroportuario-section h3 {
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 22px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.aeroportuario-table {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Clase para destacar filas especiales */
+.highlight {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
+    color: white !important;
+    font-weight: bold;
 }
 
 
@@ -663,6 +762,23 @@ body {
         right: 20px;
         font-size: 30px;
     }
+
+    /* Responsividad para sección Escala */
+    .Escala .tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .Escala .tab {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 10px;
+    }
+
+    .Escala .tab-container {
+        padding: 20px;
+        margin: 20px 10px;
+    }
 }
 
 @media screen and (max-width: 700px) {
@@ -696,7 +812,7 @@ body {
     .Escala td,
     .tabla-antiguedad-vigilador-general-container th,
     .tabla-antiguedad-vigilador-general-container td {
-        padding: 8px 10px;
+        padding: 8px 6px;
         font-size: 12px;
     }
 
@@ -715,5 +831,17 @@ body {
 
     .nosotros .contenido-seccion {
         padding: 0 10px;
+    }
+
+    .Escala .contenido-seccion {
+        padding: 10px;
+    }
+
+    .aeroportuario-section {
+        padding: 15px;
+    }
+
+    .aeroportuario-section h3 {
+        font-size: 18px;
     }
 }
