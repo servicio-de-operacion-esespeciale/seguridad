@@ -10,79 +10,203 @@
 </head>
 <body>
     
-    <section id="Calculadora" class="Calculadora">
-        <div class="contenido-seccion">
-            <br>
-            <br>
-            <div class="container">
-                <h1>Calculadora de Sueldo y Aguinaldo</h1>
-
-                <label for="categoria">Categoría:</label>
-                <select id="categoria">
-                    <option value="vigilador_general">Vigilador General</option>
-                    <option value="vigilador_bombero">Vigilador Bombero</option>
-                    <option value="administrativo">Administrativo</option>
-                    <option value="vigilador_principal">Vigilador Principal</option>
-                    <option value="verificacion_eventos">Verificación Eventos</option>
-                    <option value="operador_monitoreo">Operador de Monitoreo</option>
-                    <option value="guia_tecnico">Guía Técnico</option>
-                    <option value="instalador_seguridad">Instalador de Seguridad Electrónica</option>
-                    <option value="control_admision">Control de Admisión y Permanencia General</option>
-                </select>
-
-                <label for="sueldo_basico">Sueldo Básico:</label>
-                <input id="sueldo_basico" readonly="" type="text" />
-
-                <label for="antiguedad">Años de Antigüedad:</label>
-                <input id="antiguedad" type="text" />
-
-                <label for="presentismo">Presentismo:</label>
-                <input id="presentismo" readonly="" type="text" />
-                    
-                <label for="adicional_remunerativo">Adicional Remunerativo:</label>
-                <input id="adicional_remunerativo" readonly="" type="text" />
-
-                <label for="horas_nocturnas">Horas Nocturnas:</label>
-                <input id="horas_nocturnas" type="text" />
-
-                <label for="horas_feriado">Horas en Feriado:</label>
-                <input id="horas_feriado" type="text" />
-
-                <label for="viatico">Viático:</label>
-                <input id="viatico" type="text" /> 
-                
-                <label for="horas_al50">Horas al 50%:</label>
-                <input id="horas_al50" type="text" />
-
-                <label for="horas_al100">Horas al 100%:</label>
-                <input id="horas_al100" type="text" />
-
-                <label for="sindicato">Afiliado al Sindicato:</label>
-                <select id="sindicato">
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                </select>
-
-                <button onclick="calcularSueldo()">Calcular</button>
-
-                <div class="result-label">Resultados:</div>
-
-                <label for="sueldo_bruto">Sueldo Bruto:</label>
-                <input id="sueldo_bruto" readonly="" type="text" />
-
-                <label for="descuento">Descuento:</label>
-                <input id="descuento" readonly="" type="text" />
-
-                <label for="sueldo_neto">Sueldo Neto:</label>
-                <input id="sueldo_neto" readonly="" type="text" />
-
-                <label for="aguinaldo">Aguinaldo Neto:</label>
-                <input id="aguinaldo" readonly="" type="text" />
-            </div>
+   <div class="tab-container">
+        <div class="tabs">
+            <div class="tab active" onclick="showTab('anexo24')">julio</div>
+            <div class="tab" onclick="showTab('anexo25')">agosto</div>
+            <div class="tab" onclick="showTab('anexo26')">septiembre</div>
         </div>
-    </section>
 
+        <!-- ANEXO 24 -->
+        <div id="anexo24" class="tab-content active">
+            <h1>Calculadora julio</h1>
 
+            <label for="categoria24">Categoría:</label>
+            <select id="categoria24">
+                <option value="vigilador_general">Vigilador General</option>
+                <option value="vigilador_bombero">Vigilador Bombero</option>
+                <option value="administrativo">Administrativo</option>
+                <option value="vigilador_principal">Vigilador Principal</option>
+                <option value="verificacion_eventos">Verificación Eventos</option>
+                <option value="operador_monitoreo">Operador de Monitoreo</option>
+                <option value="guia_tecnico">Guía Técnico</option>
+                <option value="instalador_seguridad">Instalador de Seguridad Electrónica</option>
+                <option value="control_admision">Control de Admisión y Permanencia General</option>
+            </select>
+
+            <label for="sueldo_basico24">Sueldo Básico:</label>
+            <input id="sueldo_basico24" readonly type="text" />
+
+            <label for="antiguedad24">Años de Antigüedad:</label>
+            <input id="antiguedad24" type="number" min="0" step="1" />
+
+            <label for="presentismo24">Presentismo:</label>
+            <input id="presentismo24" readonly type="text" />
+                
+            <label for="viatico24">Viático:</label>
+            <input id="viatico24" readonly type="text" />
+
+            <label for="adicional_no_remunerativo24">Adicional No Remunerativo:</label>
+            <input id="adicional_no_remunerativo24" readonly type="text" />
+
+            <label for="horas_nocturnas24">Horas Nocturnas:</label>
+            <input id="horas_nocturnas24" type="number" min="0" step="0.1" />
+
+            <label for="horas_feriado24">Horas en Feriado:</label>
+            <input id="horas_feriado24" type="number" min="0" step="0.1" />
+            
+            <label for="horas_al5024">Horas al 50%:</label>
+            <input id="horas_al5024" type="number" min="0" step="0.1" />
+
+            <label for="horas_al10024">Horas al 100%:</label>
+            <input id="horas_al10024" type="number" min="0" step="0.1" />
+
+            <label for="sindicato24">Afiliado al Sindicato:</label>
+            <select id="sindicato24">
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+            </select>
+
+            <button onclick="calcularSueldo('24')">Calcular</button>
+
+            <div class="result-label">Resultados:</div>
+
+            <label for="sueldo_bruto24">Sueldo Bruto:</label>
+            <input id="sueldo_bruto24" readonly type="text" class="result-input" />
+
+            <label for="descuento24">Descuento:</label>
+            <input id="descuento24" readonly type="text" class="result-input" />
+
+            <label for="sueldo_neto24">Sueldo Neto:</label>
+            <input id="sueldo_neto24" readonly type="text" class="result-input" />
+        </div>
+
+        <!-- ANEXO 25 -->
+        <div id="anexo25" class="tab-content">
+            <h1>Calculadora agosto</h1>
+
+            <label for="categoria25">Categoría:</label>
+            <select id="categoria25">
+                <option value="vigilador_general">Vigilador General</option>
+                <option value="vigilador_bombero">Vigilador Bombero</option>
+                <option value="administrativo">Administrativo</option>
+                <option value="vigilador_principal">Vigilador Principal</option>
+                <option value="verificacion_eventos">Verificación Eventos</option>
+                <option value="operador_monitoreo">Operador de Monitoreo</option>
+                <option value="guia_tecnico">Guía Técnico</option>
+                <option value="instalador_seguridad">Instalador de Seguridad Electrónica</option>
+                <option value="control_admision">Control de Admisión y Permanencia General</option>
+            </select>
+
+            <label for="sueldo_basico25">Sueldo Básico:</label>
+            <input id="sueldo_basico25" readonly type="text" />
+
+            <label for="antiguedad25">Años de Antigüedad:</label>
+            <input id="antiguedad25" type="number" min="0" step="1" />
+
+            <label for="presentismo25">Presentismo:</label>
+            <input id="presentismo25" readonly type="text" />
+                
+            <label for="viatico25">Viático:</label>
+            <input id="viatico25" readonly type="text" />
+
+            <label for="adicional_no_remunerativo25">Adicional No Remunerativo:</label>
+            <input id="adicional_no_remunerativo25" readonly type="text" />
+
+            <label for="horas_nocturnas25">Horas Nocturnas:</label>
+            <input id="horas_nocturnas25" type="number" min="0" step="0.1" />
+
+            <label for="horas_feriado25">Horas en Feriado:</label>
+            <input id="horas_feriado25" type="number" min="0" step="0.1" />
+            
+            <label for="horas_al5025">Horas al 50%:</label>
+            <input id="horas_al5025" type="number" min="0" step="0.1" />
+
+            <label for="horas_al10025">Horas al 100%:</label>
+            <input id="horas_al10025" type="number" min="0" step="0.1" />
+
+            <label for="sindicato25">Afiliado al Sindicato:</label>
+            <select id="sindicato25">
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+            </select>
+
+            <button onclick="calcularSueldo('25')">Calcular</button>
+
+            <div class="result-label">Resultados:</div>
+
+            <label for="sueldo_bruto25">Sueldo Bruto:</label>
+            <input id="sueldo_bruto25" readonly type="text" class="result-input" />
+
+            <label for="descuento25">Descuento:</label>
+            <input id="descuento25" readonly type="text" class="result-input" />
+
+            <label for="sueldo_neto25">Sueldo Neto:</label>
+            <input id="sueldo_neto25" readonly type="text" class="result-input" />
+        </div>
+
+        <!-- ANEXO 26 -->
+        <div id="anexo26" class="tab-content">
+            <h1>Calculadora septiembre</h1>
+
+            <label for="categoria26">Categoría:</label>
+            <select id="categoria26">
+                <option value="vigilador_general">Vigilador General</option>
+                <option value="vigilador_bombero">Vigilador Bombero</option>
+                <option value="administrativo">Administrativo</option>
+                <option value="vigilador_principal">Vigilador Principal</option>
+                <option value="verificacion_eventos">Verificación Eventos</option>
+                <option value="operador_monitoreo">Operador de Monitoreo</option>
+                <option value="guia_tecnico">Guía Técnico</option>
+                <option value="instalador_seguridad">Instalador de Seguridad Electrónica</option>
+                <option value="control_admision">Control de Admisión y Permanencia General</option>
+            </select>
+
+            <label for="sueldo_basico26">Sueldo Básico:</label>
+            <input id="sueldo_basico26" readonly type="text" />
+
+            <label for="antiguedad26">Años de Antigüedad:</label>
+            <input id="antiguedad26" type="number" min="0" step="1" />
+
+            <label for="presentismo26">Presentismo:</label>
+            <input id="presentismo26" readonly type="text" />
+                
+            <label for="viatico26">Viático:</label>
+            <input id="viatico26" readonly type="text" />
+
+            <label for="horas_nocturnas26">Horas Nocturnas:</label>
+            <input id="horas_nocturnas26" type="number" min="0" step="0.1" />
+
+            <label for="horas_feriado26">Horas en Feriado:</label>
+            <input id="horas_feriado26" type="number" min="0" step="0.1" />
+            
+            <label for="horas_al5026">Horas al 50%:</label>
+            <input id="horas_al5026" type="number" min="0" step="0.1" />
+
+            <label for="horas_al10026">Horas al 100%:</label>
+            <input id="horas_al10026" type="number" min="0" step="0.1" />
+
+            <label for="sindicato26">Afiliado al Sindicato:</label>
+            <select id="sindicato26">
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+            </select>
+
+            <button onclick="calcularSueldo('26')">Calcular</button>
+
+            <div class="result-label">Resultados:</div>
+
+            <label for="sueldo_bruto26">Sueldo Bruto:</label>
+            <input id="sueldo_bruto26" readonly type="text" class="result-input" />
+
+            <label for="descuento26">Descuento:</label>
+            <input id="descuento26" readonly type="text" class="result-input" />
+
+            <label for="sueldo_neto26">Sueldo Neto:</label>
+            <input id="sueldo_neto26" readonly type="text" class="result-input" />
+        </div>
+    </div>
+    <script src="gions.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
