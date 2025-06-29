@@ -1,291 +1,477 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Work+Sans:wght@100;300;400;600;800&display=swap');
-*{
+
+/* --- RESETEO Y CONFIGURACIÓN GENERAL --- */
+* {
     box-sizing: border-box;
-    font-family: 'Work Sans';
     margin: 0;
     padding: 0;
 }
-html{
 
-    /* me permite deslizar cuando hago clic en los links del menu */
+html {
     scroll-behavior: smooth;
+    background-color: #121212; /* Color de fondo para toda la página */
 }
 
-/* SECCION I N I C I O */
-.inicio{
-    background: linear-gradient(to top, rgba(30,35,38,.8), rgba(30,35,38,1)),
-    url(img/agru.jpeg);
+body {
+    font-family: 'Work Sans', sans-serif;
+    background-color: #121212;
+    color: #fff;
+}
+
+
+/* --- HEADER Y NAVEGACIÓN --- */
+.contenedor-header {
+    background: #025180;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+.contenedor-header header {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.contenedor-header header .logo a {
+    font-family: 'Righteous', cursive;
+    font-size: 36px;
+    color: #07be72;
+    text-decoration: none;
+}
+
+.contenedor-header header nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.contenedor-header header nav ul li a {
+    color: #fff;
+    margin: 0 15px;
+    padding: 3px;
+    transition: .5s;
+    text-decoration: none;
+}
+
+.contenedor-header header nav ul li a:hover {
+    color: #1CB698;
+}
+
+.nav-responsive {
+    background-color: #1CB698;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+
+/* --- SECCIÓN INICIO --- */
+.inicio {
+    background: linear-gradient(to top, rgba(30, 35, 38, .8), rgba(30, 35, 38, 1)), url(img/inicio.jpeg);
     background-size: cover;
     height: 100vh;
     color: #fff;
     display: flex;
     align-items: center;
+    padding-top: 90px;
 }
-.inicio .contenido-banner{
-    padding-top: 56px; /* Ajusta este valor si es necesario, 100px es un buen punto de partida */
+
+.inicio .contenido-banner {
+    padding-top: 100px;
     max-width: 350px;
     margin: auto;
     text-align: center;
     border-radius: 40px;
 }
-.wrapper,
-.wrapper .img-area {
-  background: #80b9e5;
-  box-shadow: -3px -3px 7px rgb(244, 177, 177), 3px 3px 5px #8585e0;
-}
+
 .wrapper {
-  position: relative;
-  width: 350px;
-  padding: 30px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 15px;
+    position: relative;
+    width: 350px;
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    background: #80b9e5;
+    box-shadow: -3px -3px 7px rgb(244, 177, 177), 3px 3px 5px #8585e0;
 }
+
 .wrapper .img-area {
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #80b9e5;
+    box-shadow: -3px -3px 7px rgb(244, 177, 177), 3px 3px 5px #8585e0;
 }
 
 .img-area .inner-area {
-  height: calc(100% - 25px);
-  width: calc(100% - 25px);
-  border-radius: 50%;
+    height: calc(100% - 25px);
+    width: calc(100% - 25px);
+    border-radius: 50%;
 }
-.inner-area img {
-  height: 100%;
-  width: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.wrapper #name {
-  font-size: 23px;
-  font-weight: 500;
-  color: #31344b;
-  margin: 10px 0 5px 0;
-}
-.wrapper #btn {
-  position: relative;
-  width: 150px;
-  border: none;
-  outline: none;
-  padding: 5px;
-  color: #31344b;
-  font-size: 13px;
-  font-weight: 450;
-  border-radius: 5px;
-  cursor: pointer;
-  z-index: 4;
-  margin: 10px 0 15px 0;
-  background-color: #ecf0f3;
-  box-shadow: -3px -3px 7px rgb(233, 140, 140), 3px 3px 5px #adadec;
-}
-.wrapper .info {
-  color: #44476a;
-  font-size: 14px;
-  font-weight: 500;
-  color: #31344b;
-  text-align: left;
-}
-.info p {
-  margin-bottom: 20px;
-}
-.Novedades{
-  /*  background-color: #1e2326;
-    color: #fff;
-    padding: 50px 20px;*/
-     padding-top: 56px; /* Añadido o ajustado */
-    background-color: #121212;
-    color: #fff;
-}
-.Novedades .contenido-seccion{
-    max-width: 1100px;
-    margin: auto;
-     padding: 0 20px;
-}
-.Novedades h2{
-    font-size: 48px;
-    font-family: 'Righteous';
-    text-align: center;
-    padding: 20px 0;
 
+.inner-area img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
 }
-.Novedades .contenido-seccion p{
-    font: 18px;
-    line-height: 22px;
+
+.wrapper #name {
+    font-size: 23px;
+    font-weight: 500;
+    color: #31344b;
+    margin: 10px 0 5px 0;
+}
+
+.wrapper #btn {
+    position: relative;
+    width: 150px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    color: #31344b;
+    font-size: 13px;
+    font-weight: 450;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 4;
+    margin: 10px 0 15px 0;
+    background-color: #ecf0f3;
+    box-shadow: -3px -3px 7px rgb(233, 140, 140), 3px 3px 5px #adadec;
+}
+
+.wrapper .info {
+    color: #44476a;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.info p {
     margin-bottom: 20px;
 }
-.Novedades .contenido-seccion p span{
-    color: #1CB698;
+
+/* --- SECCIÓN NOVEDADES --- */
+.Novedades {
+    margin-top: 80px;
+    padding: 3rem 0;
+    background: white;
+    padding-top: 90px;
+}
+
+.Novedades .contenido-seccion {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.Novedades .contenido-seccion h2 {
+    color: #1e3c72;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.Novedades .contenido-seccion p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    text-align: justify;
+    color: #333;
+}
+
+.Novedades .contenido-seccion span {
+    color: #2a5298;
     font-weight: bold;
 }
-.Novedades .fila{
-    display: flex;
+
+.Novedades .contenido-seccion strong {
+    color: #1e3c72;
 }
-.Novedades .fila .col
-{
-    width: 50%;
-}
-.Novedades .fila .col h3{
-    font-size: 28px;
-    font-family: 'Righteous';
-    margin-bottom: 25px;
-}
-.Novedades .fila .col ul{
-    list-style: none;
-}
-.Novedades .fila .col ul li{
-    margin: 12px 0;
-}
-.Novedades .fila .col ul li strong{
-    display: inline-block;
-    color: #1CB698;
-    width: 130px;
-}
-.Novedades .fila .col ul li span{
-    background-color: #1CB698;
-    padding: 3px;
-    font-weight: bold;
-    border-radius: 5px;
-}
-.Novedades .fila .col .contenedor-intereses{
-    display: flex;
-    flex-wrap: wrap;
-}
-.Novedades .fila .col .contenedor-intereses .interes{
-    width: 100px;
-    height: 100px;
-    background-color: #252A2E;
+
+.documentos-oficiales {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: #f8f9fa;
     border-radius: 10px;
-    margin: 0 15px 15px 0;
+    border: 2px solid #e9ecef;
+}
+
+.documentos-oficiales h3 {
+    color: #1e3c72;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.galeria-documentos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.documento-item {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.documento-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.documento-item h4 {
+    color: #2a5298;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.documento-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    border: 2px solid #e9ecef;
+}
+
+.documento-item img:hover {
+    opacity: 0.9;
+    border-color: #2a5298;
+}
+
+/* Modal para zoom de imágenes */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 1200px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    transition: .3s;
-}.Novedades .fila .col .contenedor-intereses .interes:hover{
-    background-color: #1CB698;
+    align-items: center;
 }
-.Novedades .fila .col .contenedor-intereses .interes i{
-    font-size: 30px;
-    margin-bottom: 10px;
+
+.modal-image {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(255,255,255,0.3);
 }
-.Novedades button{
-    cursor: pointer;
-    background-color: transparent;
-    border: 2px solid #fff;
-    width: fit-content;
-    display: block;
-    margin: 20px auto;
-    padding: 10px 22px;
-    font-size: 16px;
-    color: #fff;
-    position: relative;
-    z-index: 10;
+
+.modal-title {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
 }
-.Novedades button .overlay{
+
+.close {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background-color: #1CB698;
-    z-index: -1;
-    transition: 1s;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
 }
-.Novedades button:hover .overlay{
+
+.close:hover {
+    color: #ff6b6b;
+}
+
+.navigation-buttons {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.navigation-buttons:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+/* --- SECCIÓN CALCULADORA --- */
+.Calculadora {
+    padding-top: 100px;
+    background-color: #121212;
+    color: #fff;
+    text-align: center;
+}
+.Calculadora.contenido-seccion {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+.tab-container {
+    max-width: 800px;
+    margin: 20px auto;
+    margin-top: 100px; /* CORRECCIÓN: Agregar margen superior para compensar la cabecera */
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.tabs {
+    display: flex;
+    background-color: #007bff;
+}
+
+.tab {
+    flex: 1;
+    padding: 15px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    border-right: 1px solid rgba(255,255,255,0.2);
+    transition: background-color 0.3s;
+}
+
+.tab:last-child {
+    border-right: none;
+}
+
+.tab.active, .tab:hover {
+    background-color: #0056b3;
+}
+
+.tab-content {
+    display: none;
+    padding: 30px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.tab-content label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.tab-content input, .tab-content select {
     width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
-/* SECCION CURRICULUM */
-.Calculadora{
-      padding-top: 56px; /* Añadido o ajustado */
-     background-color: #1e2326;
-     color: #fff;
- 
-    body {
-      font-family: Arial, sans-serif;
-       background-color: #FFFFFF;
-      text-align: center;
-    }
 
-    .container {
-      max-width: 400px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #1e2326;
-      border-radius: 10px;
-    }
-
-    h2 {
-       color: #FFFFFF;
-    }
-
-    label {
-      display: inline-block;
-      width: 150px;
-      text-align: right;
-      margin-right: 10px;
-      font-weight: bold;
-    }
-
-    input[type="text"] {
-      width: 200px;
-      padding: 5px;
-      margin-bottom: 10px;
-    }
-
-    select {
-      width: 220px;
-      padding: 5px;
-      margin-bottom: 10px;
-    }
-
-    .result-label {
-      color: #FFFFFF;
-      font-weight: bold;
-      margin-top: 20px;
-    }
-
-    .result-value {
-      background-color: #FFFFFF;
-      border: none;
-      width: 200px;
-      padding: 5px;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-
-    button {
-      background-color: #216297;
-      color: #FFFFFF;
-      border: none;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 14px;
-      margin-top: 10px;
-      cursor: pointer;
-    }
-  
+.tab-content input[readonly] {
+    background-color: #f5f5f5;
+    color: #666;
 }
-/* SECCION PORTFOLIO */
-/* ... (otros estilos existentes) ... */
 
-/* SECCION ESCALA */
+.tab-content button {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tab-content button:hover {
+    background-color: #0056b3;
+}
+
+.result-label {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    border-top: 2px solid #007bff;
+    padding-top: 15px;
+}
+
+.result-input {
+    background-color: #e8f4f8 !important;
+    font-weight: bold;
+    color: #333 !important;
+}
+
+
+/* --- SECCIÓN ESCALA --- */
 .Escala {
-    padding-top: 56px; /* Ajusta este valor si es necesario para el espacio del menú */
+    padding-top: 120px;
     background-color: #121212;
     color: #fff;
 }
 
-/* Contenedor general para todas las tablas dentro de la sección Escala */
 .Escala .contenido-seccion {
     max-width: 1100px;
     margin: auto;
@@ -294,35 +480,32 @@ html{
 
 .Escala h2 {
     font-size: 48px;
-    font-family: 'Righteous';
+    font-family: 'Righteous', cursive;
     text-align: center;
     padding: 20px 0;
-    color: #fff; /* Puedes cambiar a #07be72 si quieres el título verde */
+    color: #fff;
 }
 
-/* Estilos comunes para los contenedores de tabla */
 .tabla-escala-container,
-.tabla-antiguedad-vigilador-general-container { /* Eliminamos .tabla-antiguedad-container ya que esa tabla se eliminó */
-    overflow-x: auto; /* Asegura el scroll horizontal si es necesario */
+.tabla-antiguedad-vigilador-general-container {
+    overflow-x: auto;
     margin-top: 30px;
     margin-bottom: 30px;
-    background-color: #2e353b; /* Fondo para el contenedor de la tabla */
+    background-color: #2e353b;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Contenedor para el scroll interno de las tablas */
 .tabla-scroll {
     overflow-x: auto;
 }
 
-/* Estilos comunes para todas las tablas */
 .Escala table {
     width: 100%;
-    min-width: 900px; /* Ancho mínimo para forzar el scroll horizontal */
+    min-width: 900px;
     border-collapse: collapse;
-    margin-bottom: 20px; /* Espacio debajo de la tabla */
+    margin-bottom: 20px;
     color: #fff;
     font-size: 14px;
 }
@@ -331,36 +514,31 @@ html{
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #444;
-    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+    white-space: nowrap;
 }
 
 .Escala thead th {
-    background-color: #025180; /* Azul de tu header */
+    background-color: #025180;
     color: #fff;
     font-weight: bold;
     text-transform: uppercase;
 }
 
-/* Estilos de zebra para las filas (colores alternos) */
 .Escala tbody tr:nth-child(odd) {
-    background-color: #1e2326; /* Gris oscuro */
+    background-color: #1e2326;
 }
 
 .Escala tbody tr:nth-child(even) {
-    background-color: #252A2E; /* Gris un poco más claro */
+    background-color: #252A2E;
 }
 
-/* ******************************************* */
-/* EFECTO HOVER PARA LAS FILAS DE TODAS LAS TABLAS */
-/* ******************************************* */
 .tabla-escala-container tbody tr:hover,
 .tabla-antiguedad-vigilador-general-container tbody tr:hover {
-    background-color: #f83e38; /* Color verde que deseas al pasar el cursor */
-    color: #000; /* Color de texto negro para mejor contraste con el verde */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para el cambio de color */
+    background-color: #1CB698;
+    color: #000;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Info adicional - Bloque de textos informativos */
 .info-adicional {
     margin-top: 40px;
     padding: 20px;
@@ -374,176 +552,168 @@ html{
     font-size: 18px;
     margin-bottom: 15px;
     line-height: 1.5;
-    color: #d4dfda; /* Color verde para los títulos de la info adicional */
+    color: #07be72;
 }
 
-/* Título específico para la tabla de Vigilador General */
 .tabla-antiguedad-vigilador-general-container h2 {
     font-size: 28px;
-    font-family: 'Righteous';
+    font-family: 'Righteous', cursive;
     text-align: center;
-    color: #ececec;
+    color: #07be72;
     margin-bottom: 20px;
 }
 
-/* MEDIA QUERIES para responsividad (revisados) */
-@media screen and (max-width:980px){
-    nav{
-        display: none;
-    }
-    .nav-responsive{
-        display: block;
-    }
-    nav.responsive{
-        display: block;
-        position: absolute;
-        right: 0;
-        top: 75px; /* Ajustado para que quede debajo del header en móvil */
-        background-color: #252A2E;
-        width: 180px;
-    }
-    nav.responsive ul{
-        display: block !important;
-    }
-    nav.responsive ul li{
-        border-bottom: 1px solid #fff;
-        padding: 10px 0;
-    }
-    /* Ajustes para padding-top en secciones principales en móvil */
-    .Escala, .Novedades, .Calculadora, .nosotros, .inicio {
-        padding-top: 90px; /* Menor padding para pantallas más pequeñas */
-    }
-    .Escala table,
-    .tabla-antiguedad-vigilador-general-container table {
-        min-width: 700px; /* Ajusta este valor si las tablas aún son demasiado anchas en tablets */
-    }
-}
 
-@media screen and (max-width:700px){
-    /* Ajustes adicionales para móviles pequeños */
-    .Escala h2 {
-        font-size: 32px; /* Reducir tamaño de título principal */
-    }
-    .Escala th,
-    .Escala td,
-    .tabla-antiguedad-vigilador-general-container th,
-    .tabla-antiguedad-vigilador-general-container td {
-        padding: 8px 10px; /* Padding más pequeño */
-        font-size: 12px; /* Fuente más pequeña */
-    }
-    .Escala table,
-    .tabla-antiguedad-vigilador-general-container table {
-        min-width: 600px; /* Ajusta si sigue siendo muy ancha */
-    }
-    .info-adicional h3 {
-        font-size: 16px;
-    }
-    .tabla-antiguedad-vigilador-general-container h2 {
-        font-size: 24px;
-    }
-}
-
-/* Asegura que el color de fondo del body sea consistente */
-body {
+/* --- SECCIÓN NOSOTROS --- */
+.nosotros {
+    padding-top: 100px;
     background-color: #121212;
-    color: #fff;
-    /* otras propiedades del body si las tienes */
-}
-
-
-/* Y si tienes un media query para 980px, revisa también */
-@media screen and (max-width:980px){
-    /* ... (otros estilos responsivos) ... */
-    .Escala, .Novedades, .Calculadora, .nosotros, .inicio {
-        padding-top: 90px; /* Asegúrate que el padding también esté aquí */
-    }
-}
-
-/* SECCION NOSOTROS */
-.nosotros{
-     padding-top: 56px; /* Añadido o ajustado */
-    background-color: #121212; 
     color: #fff;
     text-align: center;
 }
-/* Esto ya lo tenías, pero es bueno asegurarlo */
-html {
-    /* me permite deslizar cuando hago clic en los links del menu */
-    scroll-behavior: smooth;
-    background-color: #121212; /* Añade o asegura este color de fondo para todo el html */
-}
 
-body {
-    /* Esto ya lo tenías, asegúrate que no tenga un background-color blanco */
-    background-color: #121212; /* Añade o asegura este color de fondo para todo el body */
-    color: #fff; /* Asegura que el texto por defecto sea blanco */
-    /* ... otros estilos del body ... */
-}
-.nosotros .contenido-seccion{
+.nosotros .contenido-seccion {
     max-width: 1100px;
     margin: auto;
     padding: 0 20px;
 }
-.nosotros h2{
+
+.nosotros h2 {
     font-size: 48px;
-    font-family: 'Righteous';
+    font-family: 'Righteous', cursive;
     text-align: center;
     padding: 20px 0;
-    color: #d3dbd8; /* Color verde de tu logo */
+    color: #07be72;
 }
-.nosotros p{
+
+.nosotros p {
     font-size: 18px;
     line-height: 28px;
     margin-bottom: 20px;
-    text-align: justify; /* Texto justificado para una mejor lectura */
+    text-align: justify;
 }
-/* Opcional: para el primer párrafo, si quieres un énfasis */
-.nosotros p span{
-    color: #e1ebe9;
+
+.nosotros p span {
+    color: #1CB699;
     font-weight: bold;
 }
 
-/* Para dispositivos más pequeños, para que el padding y texto se ajusten */
-@media screen and (max-width:700px){}
-    .nosotros .contenido-seccion{
+
+/* --- MEDIA QUERIES PARA RESPONSIVIDAD --- */
+@media screen and (max-width: 980px) {
+    nav {
+        display: none;
+    }
+
+    .nav-responsive {
+        display: block;
+    }
+
+    nav.responsive {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 75px;
+        background-color: #252A2E;
+        width: 180px;
+    }
+
+    nav.responsive ul {
+        display: block !important;
+    }
+
+    nav.responsive ul li {
+        border-bottom: 1px solid #fff;
+        padding: 10px 0;
+    }
+
+    .Escala, .Novedades, .Calculadora, .nosotros, .inicio {
+        padding-top: 90px;
+    }
+
+    /* CORRECCIÓN: Ajustar margen de calculadora en móviles */
+    .tab-container {
+        margin-top: 90px;
+    }
+
+    .Escala table,
+    .tabla-antiguedad-vigilador-general-container table {
+        min-width: 700px;
+    }
+    
+    .Novedades .contenido-seccion h2 {
+        font-size: 2rem;
+    }
+
+    .galeria-documentos {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        padding: 10px;
+    }
+
+    .navigation-buttons {
+        padding: 10px 15px;
+        font-size: 20px;
+    }
+
+    .close {
+        top: 10px;
+        right: 20px;
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .sobremi .fila,
+    .curriculum .fila,
+    .portfolio .galeria,
+    .contacto .fila {
+        display: block;
+    }
+
+    .sobremi .fila .col,
+    .curriculum .fila .col,
+    .portfolio .galeria .proyecto,
+    .contacto .fila .col {
+        width: 100%;
+    }
+
+    .curriculum .fila .derecha {
+        margin-left: 0; /* Ajuste para móviles */
+    }
+
+    .portfolio .galeria .proyecto img {
+        width: 100%;
+    }
+    
+    .Escala h2, .nosotros h2 {
+        font-size: 32px;
+    }
+
+    .Escala th,
+    .Escala td,
+    .tabla-antiguedad-vigilador-general-container th,
+    .tabla-antiguedad-vigilador-general-container td {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .Escala table,
+    .tabla-antiguedad-vigilador-general-container table {
+        min-width: 600px;
+    }
+
+    .info-adicional h3 {
+        font-size: 16px;
+    }
+
+    .tabla-antiguedad-vigilador-general-container h2 {
+        font-size: 24px;
+    }
+
+    .nosotros .contenido-seccion {
         padding: 0 10px;
-    }
-    .nosotros h2{
-        font-size: 38px;
-    }
-
-
-@media screen and (max-width:700px){
-    .sobremi .fila{
-        display: block;
-    }
-    .sobremi .fila .col{
-        width: fit-content;
-    }
-    .curriculum .fila{
-        display: block;
-    }
-    .curriculum .fila .col{
-        width: 90%;
-    }
-    .curriculum .fila .derecha{
-        margin-left: 20px;
-    }
-
-    .portfolio .galeria{
-        display: block;
-        width: 100%;
-    }
-    .portfolio .galeria .proyecto{
-        max-width: 100%;
-    }
-    .portfolio .galeria .proyecto img{
-        width: 100%;
-    }
-    .contacto .fila{
-        display: block;
-    }
-    .contacto .fila .col{
-        width: 100%;
     }
 }
