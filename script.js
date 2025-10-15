@@ -164,3 +164,80 @@
         
         // Calcular inicialmente para el anexo 24
         calcularSueldo('24');
+// Valores según cada anexo corregidos según la tabla
+            if (anexo === '24') { // Oct-25
+                const adicionalNoRemunerativo = document.getElementById(`adicional_no_remunerativo${anexo}`);
+                switch (categoria) {
+                    case "vigilador_general":
+                        sueldoCategoria = 817500; presentismoCategoria = 159600; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
+                    case "vigilador_bombero":
+                        sueldoCategoria = 871600; presentismoCategoria = 173000; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
+                    case "administrativo":
+                        sueldoCategoria = 896300; presentismoCategoria = 180000; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
+                    case "vigilador_principal":
+                        sueldoCategoria = 924100; presentismoCategoria = 186800; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
+                    case "verificacion_eventos":
+                        sueldoCategoria = 871600; presentismoCategoria = 173000; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
+                    case "operador_monitoreo":
+                        sueldoCategoria = 871600; presentismoCategoria = 173000; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
+                    case "guia_tecnico":
+                        sueldoCategoria = 896300; presentismoCategoria = 180000; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
+                    case "instalador_seguridad":
+                        sueldoCategoria = 924100; presentismoCategoria = 186800; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
+                    case "control_admision":
+                        sueldoCategoria = 817500; presentismoCategoria = 159600; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
+                    default:
+                        sueldoCategoria = 0; presentismoCategoria = 0; viaticoCategoria = 0; adicionalNoRemunerativoCategoria = 0; break;
+                }
+                adicionalNoRemunerativo.value = formatCurrency(adicionalNoRemunerativoCategoria);
+            } else if (anexo === '25') { // Nov-25
+                const adicionalNoRemunerativo = document.getElementById(`adicional_no_remunerativo${anexo}`);
+                switch (categoria) {
+                    case "vigilador_general":
+                        sueldoCategoria = 825600; presentismoCategoria = 159600; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
+                    case "vigilador_bombero":
+                        sueldoCategoria = 880000; presentismoCategoria = 173000; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
+                    case "administrativo":
+                        sueldoCategoria = 905000; presentismoCategoria = 180000; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
+                    case "vigilador_principal":
+                        sueldoCategoria = 933000; presentismoCategoria = 186800; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
+                    case "verificacion_eventos":
+                        sueldoCategoria = 880000; presentismoCategoria = 173000; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
+                    case "operador_monitoreo":
+                        sueldoCategoria = 880000; presentismoCategoria = 173000; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
+                    case "guia_tecnico":
+                        sueldoCategoria = 905000; presentismoCategoria = 180000; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
+                    case "instalador_seguridad":
+                        sueldoCategoria = 933000; presentismoCategoria = 186800; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
+                    case "control_admision":
+                        sueldoCategoria = 825600; presentismoCategoria = 159600; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
+                    default:
+                        sueldoCategoria = 0; presentismoCategoria = 0; viaticoCategoria = 0; adicionalNoRemunerativoCategoria = 0; break;
+                }
+                adicionalNoRemunerativo.value = formatCurrency(adicionalNoRemunerativoCategoria);
+            } else if (anexo === '26') { // Dic-25
+                const adicionalNoRemunerativo = document.getElementById(`adicional_no_remunerativo${anexo}`);
+                switch (categoria) {
+                    case "vigilador_general":
+                        sueldoCategoria = 833600; presentismoCategoria = 159600; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 25000; break;
+                    case "vigilador_bombero":
+                        sueldoCategoria = 889500; presentismoCategoria = 173000; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 25000; break;
+                    case "administrativo":
+                        sueldoCategoria = 915200; presentismoCategoria = 180000; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 25000; break;
+                    case "vigilador_principal":
+                        sueldoCategoria = 944000; presentismoCategoria = 186800; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 25000; break;
+                    case "verificacion_eventos":
+                        sueldoCategoria = 889500; presentismoCategoria = 173000; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 25000; break;
+                    case "operador_monitoreo":
+                        sueldoCategoria = 889500; presentismoCategoria = 173000; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 25000; break;
+                    case "guia_tecnico":
+                        sueldoCategoria = 915200; presentismoCategoria = 180000; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 25000; break;
+                    case "instalador_seguridad":
+                        sueldoCategoria = 944000; presentismoCategoria = 186800; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 25000; break;
+                    case "control_admision":
+                        sueldoCategoria = 833600; presentismoCategoria = 159600; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 25000; break;
+                    default:
+                        sueldoCategoria = 0; presentismoCategoria = 0; viaticoCategoria = 0; adicionalNoRemunerativoCategoria = 0; break;
+                }
+                adicionalNoRemunerativo.value = formatCurrency(adicionalNoRemunerativoCategoria);
+            }
