@@ -33,7 +33,7 @@ function calcularSueldo(anexo) {
     let adicionalNoRemunerativoCategoria = 0; // Usado para Jul/Ago/Oct/Nov
     let sumaNoRemunerativaCategoria = 0; // Usado para Dic
 
-    // Valores según cada anexo corregidos según la tabla
+    // Valores según cada anexo
     if (anexo === '24') { // Jul-25 (Valores originales)
         const adicionalNoRemunerativo = document.getElementById(`adicional_no_remunerativo${anexo}`);
         switch (categoria) {
@@ -112,10 +112,9 @@ function calcularSueldo(anexo) {
         if (adicionalNoRemunerativo) adicionalNoRemunerativo.value = formatCurrency(0);
     } else if (anexo === '27') { // Oct-25 (NUEVOS VALORES)
         const adicionalNoRemunerativo = document.getElementById(`adicional_no_remunerativo${anexo}`);
-        // NOTA: En la tabla el "Adicional por Presentismo" de oct-25 es 159.600 o 173.000 o 186.800
         switch (categoria) {
             case "vigilador_general":
-                sueldoCategoria = 817500; presentismoCategoria = 159600; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break; // El presentismo ya incluye el adicional
+                sueldoCategoria = 817500; presentismoCategoria = 159600; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
             case "vigilador_bombero":
                 sueldoCategoria = 871600; presentismoCategoria = 173000; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
             case "administrativo":
@@ -135,10 +134,10 @@ function calcularSueldo(anexo) {
             default:
                 sueldoCategoria = 0; presentismoCategoria = 0; viaticoCategoria = 0; adicionalNoRemunerativoCategoria = 0; break;
         }
-        if (adicionalNoRemunerativo) adicionalNoRemunerativo.value = formatCurrency(adicionalNoRemunerativoCategoria);
+        // Asumiendo que adicionalNoRemunerativoCategoria se utiliza para mostrar el "Adicional por Presentismo"
+        if (adicionalNoRemunerativo) adicionalNoRemunerativo.value = formatCurrency(presentismoCategoria); // Se muestra el presentismo como adicional
     } else if (anexo === '28') { // Nov-25 (NUEVOS VALORES)
         const adicionalNoRemunerativo = document.getElementById(`adicional_no_remunerativo${anexo}`);
-        // NOTA: En la tabla el "Adicional por Presentismo" de nov-25 es 159.600 o 173.000 o 186.800
         switch (categoria) {
             case "vigilador_general":
                 sueldoCategoria = 825600; presentismoCategoria = 159600; viaticoCategoria = 473800; adicionalNoRemunerativoCategoria = 0; break;
@@ -161,11 +160,11 @@ function calcularSueldo(anexo) {
             default:
                 sueldoCategoria = 0; presentismoCategoria = 0; viaticoCategoria = 0; adicionalNoRemunerativoCategoria = 0; break;
         }
-        if (adicionalNoRemunerativo) adicionalNoRemunerativo.value = formatCurrency(adicionalNoRemunerativoCategoria);
+        // Se asume que adicionalNoRemunerativoCategoria se utiliza para mostrar el "Adicional por Presentismo"
+        if (adicionalNoRemunerativo) adicionalNoRemunerativo.value = formatCurrency(presentismoCategoria); // Se muestra el presentismo como adicional
     } else if (anexo === '29') { // Dic-25 (NUEVOS VALORES) - Incluye Suma No Remunerativa $25.000
         const adicionalNoRemunerativo = document.getElementById(`adicional_no_remunerativo${anexo}`);
         sumaNoRemunerativaCategoria = 25000; // Valor fijo según tabla
-        // NOTA: En la tabla el "Adicional por Presentismo" de dic-25 es 159.600 o 173.000 o 186.800
         switch (categoria) {
             case "vigilador_general":
                 sueldoCategoria = 833600; presentismoCategoria = 159600; viaticoCategoria = 473800; break;
@@ -188,7 +187,7 @@ function calcularSueldo(anexo) {
             default:
                 sueldoCategoria = 0; presentismoCategoria = 0; viaticoCategoria = 0; sumaNoRemunerativaCategoria = 0; break;
         }
-        // Se asume que el input de adicional no remunerativo se usa para mostrar la suma no remunerativa en diciembre.
+        // Muestra la suma no remunerativa de Diciembre en el campo "Adicional No Remunerativo".
         if (adicionalNoRemunerativo) adicionalNoRemunerativo.value = formatCurrency(sumaNoRemunerativaCategoria);
 
     } else {
@@ -210,7 +209,6 @@ function calcularSueldo(anexo) {
     const horasFeriadoValue = parseFloat(horasFeriado.value) || 0;
     const sueldoFeriado = ((sueldoCategoria + presentismoCategoria) / 200) * horasFeriadoValue;
 
-    // Se mantiene la fórmula original para el cálculo de horas nocturnas y extras
     const horasNocturnasValue = parseFloat(horasNocturnas.value) || 0;
     const sueldoNocturno = ((sueldoCategoria + sueldoAntiguedad) * 0.1 / 100) * horasNocturnasValue;
 
@@ -230,7 +228,7 @@ function calcularSueldo(anexo) {
         // Dic-25: con Suma No Remunerativa
         sueldoBrutoValue = sueldoCategoria + sueldoAntiguedad + sueldoFeriado + sueldoNocturno + sueldoal50 + sueldoal100 + presentismoCategoria + viaticoCategoria + sumaNoRemunerativaCategoria;
     } else {
-        // Jul-25, Ago-25, Oct-25, Nov-25: con Adicional No Remunerativo (aunque sea 0 en Oct/Nov según el desglose de la tabla)
+        // Jul-25, Ago-25, Oct-25, Nov-25: con Adicional No Remunerativo
         sueldoBrutoValue = sueldoCategoria + sueldoAntiguedad + sueldoFeriado + sueldoNocturno + sueldoal50 + sueldoal100 + presentismoCategoria + viaticoCategoria + adicionalNoRemunerativoCategoria;
     }
 
@@ -260,7 +258,7 @@ function formatCurrency(amount) {
     const categoriaSelect = document.getElementById(`categoria${anexo}`);
     if (categoriaSelect) {
         categoriaSelect.addEventListener("change", () => calcularSueldo(anexo));
-        // Recalcular cuando se modifican los inputs que afectan el cálculo (ej: antigüedad, horas)
+        // Recalcular cuando se modifican los inputs que afectan el cálculo (ej: antigüedad, horas, sindicato)
         const inputsToRecalculate = [
             `antiguedad${anexo}`, `horas_feriado${anexo}`, `horas_nocturnas${anexo}`,
             `horas_al50${anexo}`, `horas_al100${anexo}`, `sindicato${anexo}`
@@ -275,5 +273,5 @@ function formatCurrency(amount) {
     }
 });
 
-// Calcular inicialmente para el anexo 24 (se podría cambiar a '27' para iniciar en Octubre)
+// Calcular inicialmente para el anexo 24
 calcularSueldo('24');
