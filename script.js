@@ -11,7 +11,7 @@ function showTab(tabName) {
     document.getElementById(tabName).classList.add('active');
 
     // Activar la pestaña correspondiente
-    // Es importante asegurar que 'event' esté disponible en el contexto de llamada
+    // Se asegura que 'event' esté disponible para activar la pestaña
     if (event && event.target) {
         event.target.classList.add('active');
     }
@@ -30,87 +30,11 @@ function calcularSueldo(anexo) {
     const sindicato = document.getElementById(`sindicato${anexo}`).value;
 
     let sueldoCategoria, presentismoCategoria, viaticoCategoria;
-    let adicionalNoRemunerativoCategoria = 0; // Usado para Jul/Ago/Oct/Nov
+    let adicionalNoRemunerativoCategoria = 0; // Usado para Oct/Nov
     let sumaNoRemunerativaCategoria = 0; // Usado para Dic
 
-    // Valores según cada anexo
-    if (anexo === '24') { // Jul-25 (Valores originales)
-        const adicionalNoRemunerativo = document.getElementById(`adicional_no_remunerativo${anexo}`);
-        switch (categoria) {
-            case "vigilador_general":
-                sueldoCategoria = 745030; presentismoCategoria = 153600; viaticoCategoria = 435580; adicionalNoRemunerativoCategoria = 25000; break;
-            case "vigilador_bombero":
-                sueldoCategoria = 795690; presentismoCategoria = 166210; viaticoCategoria = 435580; adicionalNoRemunerativoCategoria = 25000; break;
-            case "administrativo":
-                sueldoCategoria = 820120; presentismoCategoria = 172250; viaticoCategoria = 435580; adicionalNoRemunerativoCategoria = 25000; break;
-            case "vigilador_principal":
-                sueldoCategoria = 846230; presentismoCategoria = 178280; viaticoCategoria = 435580; adicionalNoRemunerativoCategoria = 25000; break;
-            case "verificacion_eventos":
-                sueldoCategoria = 795690; presentismoCategoria = 166210; viaticoCategoria = 435580; adicionalNoRemunerativoCategoria = 25000; break;
-            case "operador_monitoreo":
-                sueldoCategoria = 795690; presentismoCategoria = 166210; viaticoCategoria = 435580; adicionalNoRemunerativoCategoria = 25000; break;
-            case "guia_tecnico":
-                sueldoCategoria = 820120; presentismoCategoria = 172250; viaticoCategoria = 435580; adicionalNoRemunerativoCategoria = 25000; break;
-            case "instalador_seguridad":
-                sueldoCategoria = 846230; presentismoCategoria = 178280; viaticoCategoria = 435580; adicionalNoRemunerativoCategoria = 25000; break;
-            case "control_admision":
-                sueldoCategoria = 745030; presentismoCategoria = 153600; viaticoCategoria = 435580; adicionalNoRemunerativoCategoria = 25000; break;
-            default:
-                sueldoCategoria = 0; presentismoCategoria = 0; viaticoCategoria = 0; adicionalNoRemunerativoCategoria = 0; break;
-        }
-        adicionalNoRemunerativo.value = formatCurrency(adicionalNoRemunerativoCategoria);
-    } else if (anexo === '25') { // Ago-25 (Valores originales)
-        const adicionalNoRemunerativo = document.getElementById(`adicional_no_remunerativo${anexo}`);
-        switch (categoria) {
-            case "vigilador_general":
-                sueldoCategoria = 751735; presentismoCategoria = 153600; viaticoCategoria = 443215; adicionalNoRemunerativoCategoria = 50000; break;
-            case "vigilador_bombero":
-                sueldoCategoria = 804220; presentismoCategoria = 166210; viaticoCategoria = 443216; adicionalNoRemunerativoCategoria = 50000; break;
-            case "administrativo":
-                sueldoCategoria = 829500; presentismoCategoria = 172250; viaticoCategoria = 443216; adicionalNoRemunerativoCategoria = 50000; break;
-            case "vigilador_principal":
-                sueldoCategoria = 856570; presentismoCategoria = 178280; viaticoCategoria = 443216; adicionalNoRemunerativoCategoria = 50000; break;
-            case "verificacion_eventos":
-                sueldoCategoria = 804220; presentismoCategoria = 166210; viaticoCategoria = 443216; adicionalNoRemunerativoCategoria = 50000; break;
-            case "operador_monitoreo":
-                sueldoCategoria = 804220; presentismoCategoria = 166210; viaticoCategoria = 443216; adicionalNoRemunerativoCategoria = 50000; break;
-            case "guia_tecnico":
-                sueldoCategoria = 829500; presentismoCategoria = 172250; viaticoCategoria = 443216; adicionalNoRemunerativoCategoria = 50000; break;
-            case "instalador_seguridad":
-                sueldoCategoria = 856570; presentismoCategoria = 178280; viaticoCategoria = 443216; adicionalNoRemunerativoCategoria = 50000; break;
-            case "control_admision":
-                sueldoCategoria = 751735; presentismoCategoria = 153600; viaticoCategoria = 443215; adicionalNoRemunerativoCategoria = 50000; break;
-            default:
-                sueldoCategoria = 0; presentismoCategoria = 0; viaticoCategoria = 0; adicionalNoRemunerativoCategoria = 0; break;
-        }
-        adicionalNoRemunerativo.value = formatCurrency(adicionalNoRemunerativoCategoria);
-    } else if (anexo === '26') { // Sept-25 (Valores originales)
-        // Ya no tiene adicional no remunerativo ni suma no remunerativa
-        const adicionalNoRemunerativo = document.getElementById(`adicional_no_remunerativo${anexo}`);
-        switch (categoria) {
-            case "vigilador_general":
-                sueldoCategoria = 808600; presentismoCategoria = 153600; viaticoCategoria = 448800; break;
-            case "vigilador_bombero":
-                sueldoCategoria = 861600; presentismoCategoria = 166210; viaticoCategoria = 448800; break;
-            case "administrativo":
-                sueldoCategoria = 886500; presentismoCategoria = 172250; viaticoCategoria = 448800; break;
-            case "vigilador_principal":
-                sueldoCategoria = 914100; presentismoCategoria = 178280; viaticoCategoria = 448800; break;
-            case "verificacion_eventos":
-                sueldoCategoria = 861600; presentismoCategoria = 166210; viaticoCategoria = 448800; break;
-            case "operador_monitoreo":
-                sueldoCategoria = 861600; presentismoCategoria = 166210; viaticoCategoria = 448800; break;
-            case "guia_tecnico":
-                sueldoCategoria = 886500; presentismoCategoria = 172250; viaticoCategoria = 448800; break;
-            case "instalador_seguridad":
-                sueldoCategoria = 914100; presentismoCategoria = 178280; viaticoCategoria = 448800; break;
-            case "control_admision":
-                sueldoCategoria = 808600; presentismoCategoria = 153600; viaticoCategoria = 448800; break;
-            default:
-                sueldoCategoria = 0; presentismoCategoria = 0; viaticoCategoria = 0; break;
-        }
-        if (adicionalNoRemunerativo) adicionalNoRemunerativo.value = formatCurrency(0);
-    } else if (anexo === '27') { // Oct-25 (NUEVOS VALORES)
+    // Valores según cada anexo (solo Octubre, Noviembre, Diciembre)
+    if (anexo === '27') { // Oct-25 (Valores actualizados)
         const adicionalNoRemunerativo = document.getElementById(`adicional_no_remunerativo${anexo}`);
         switch (categoria) {
             case "vigilador_general":
@@ -134,9 +58,9 @@ function calcularSueldo(anexo) {
             default:
                 sueldoCategoria = 0; presentismoCategoria = 0; viaticoCategoria = 0; adicionalNoRemunerativoCategoria = 0; break;
         }
-        // Asumiendo que adicionalNoRemunerativoCategoria se utiliza para mostrar el "Adicional por Presentismo"
-        if (adicionalNoRemunerativo) adicionalNoRemunerativo.value = formatCurrency(presentismoCategoria); // Se muestra el presentismo como adicional
-    } else if (anexo === '28') { // Nov-25 (NUEVOS VALORES)
+        // En Octubre, el Adicional No Remunerativo es 0, pero mostramos el Presentismo en el campo para claridad.
+        if (adicionalNoRemunerativo) adicionalNoRemunerativo.value = formatCurrency(adicionalNoRemunerativoCategoria);
+    } else if (anexo === '28') { // Nov-25 (Valores actualizados)
         const adicionalNoRemunerativo = document.getElementById(`adicional_no_remunerativo${anexo}`);
         switch (categoria) {
             case "vigilador_general":
@@ -160,11 +84,11 @@ function calcularSueldo(anexo) {
             default:
                 sueldoCategoria = 0; presentismoCategoria = 0; viaticoCategoria = 0; adicionalNoRemunerativoCategoria = 0; break;
         }
-        // Se asume que adicionalNoRemunerativoCategoria se utiliza para mostrar el "Adicional por Presentismo"
-        if (adicionalNoRemunerativo) adicionalNoRemunerativo.value = formatCurrency(presentismoCategoria); // Se muestra el presentismo como adicional
-    } else if (anexo === '29') { // Dic-25 (NUEVOS VALORES) - Incluye Suma No Remunerativa $25.000
+        // En Noviembre, el Adicional No Remunerativo es 0.
+        if (adicionalNoRemunerativo) adicionalNoRemunerativo.value = formatCurrency(adicionalNoRemunerativoCategoria);
+    } else if (anexo === '29') { // Dic-25 (Valores actualizados) - Incluye Suma No Remunerativa $25.000
         const adicionalNoRemunerativo = document.getElementById(`adicional_no_remunerativo${anexo}`);
-        sumaNoRemunerativaCategoria = 25000; // Valor fijo según tabla
+        sumaNoRemunerativaCategoria = 25000; // Suma No Remunerativa
         switch (categoria) {
             case "vigilador_general":
                 sueldoCategoria = 833600; presentismoCategoria = 159600; viaticoCategoria = 473800; break;
@@ -187,14 +111,15 @@ function calcularSueldo(anexo) {
             default:
                 sueldoCategoria = 0; presentismoCategoria = 0; viaticoCategoria = 0; sumaNoRemunerativaCategoria = 0; break;
         }
-        // Muestra la suma no remunerativa de Diciembre en el campo "Adicional No Remunerativo".
+        // Muestra la suma no remunerativa de Diciembre.
         if (adicionalNoRemunerativo) adicionalNoRemunerativo.value = formatCurrency(sumaNoRemunerativaCategoria);
 
     } else {
-        // En caso de anexo no reconocido
+        // En caso de anexo no reconocido (si es una llamada antigua), no se calcula.
         sueldoCategoria = 0; presentismoCategoria = 0; viaticoCategoria = 0; adicionalNoRemunerativoCategoria = 0; sumaNoRemunerativaCategoria = 0;
         const adicionalNoRemunerativo = document.getElementById(`adicional_no_remunerativo${anexo}`);
         if (adicionalNoRemunerativo) adicionalNoRemunerativo.value = formatCurrency(0);
+        return;
     }
 
     // Mostrar valores base
@@ -219,20 +144,17 @@ function calcularSueldo(anexo) {
     const horasal100Value = parseFloat(horasal100.value) || 0;
     const sueldoal100 = (valorHoraNormal * 2) * horasal100Value;
 
-    // Sueldo bruto (Incluye adicionales/sumas no remunerativas si existen)
+    // Sueldo bruto
     let sueldoBrutoValue;
-    if (anexo === '26') {
-        // Sept-25: sin adicional no remunerativo
-        sueldoBrutoValue = sueldoCategoria + sueldoAntiguedad + sueldoFeriado + sueldoNocturno + sueldoal50 + sueldoal100 + presentismoCategoria + viaticoCategoria;
-    } else if (anexo === '29') {
+    if (anexo === '29') {
         // Dic-25: con Suma No Remunerativa
         sueldoBrutoValue = sueldoCategoria + sueldoAntiguedad + sueldoFeriado + sueldoNocturno + sueldoal50 + sueldoal100 + presentismoCategoria + viaticoCategoria + sumaNoRemunerativaCategoria;
     } else {
-        // Jul-25, Ago-25, Oct-25, Nov-25: con Adicional No Remunerativo
+        // Oct-25, Nov-25: La variable adicionalNoRemunerativoCategoria es 0, por lo que no suma nada extra.
         sueldoBrutoValue = sueldoCategoria + sueldoAntiguedad + sueldoFeriado + sueldoNocturno + sueldoal50 + sueldoal100 + presentismoCategoria + viaticoCategoria + adicionalNoRemunerativoCategoria;
     }
 
-    // Descuento sobre sueldo bruto (sin viático y sin adicional/suma no remunerativa)
+    // Descuento sobre la base remunerativa (sin viático y sin adicional/suma no remunerativa)
     const baseDescuento = sueldoCategoria + sueldoAntiguedad + sueldoFeriado + sueldoNocturno + sueldoal50 + sueldoal100 + presentismoCategoria;
     const descuento = (sindicato === "si" ? 0.20 : 0.17) * baseDescuento;
 
@@ -253,12 +175,12 @@ function formatCurrency(amount) {
     }).format(amount);
 }
 
-// Event listeners para cálculo automático
-['24', '25', '26', '27', '28', '29'].forEach(anexo => { // AÑADIDOS '27', '28', '29'
+// Event listeners para cálculo automático (solo '27', '28', '29')
+['27', '28', '29'].forEach(anexo => {
     const categoriaSelect = document.getElementById(`categoria${anexo}`);
     if (categoriaSelect) {
         categoriaSelect.addEventListener("change", () => calcularSueldo(anexo));
-        // Recalcular cuando se modifican los inputs que afectan el cálculo (ej: antigüedad, horas, sindicato)
+        // Recalcular cuando se modifican los inputs que afectan el cálculo
         const inputsToRecalculate = [
             `antiguedad${anexo}`, `horas_feriado${anexo}`, `horas_nocturnas${anexo}`,
             `horas_al50${anexo}`, `horas_al100${anexo}`, `sindicato${anexo}`
@@ -273,5 +195,5 @@ function formatCurrency(amount) {
     }
 });
 
-// Calcular inicialmente para el anexo 24
-calcularSueldo('24');
+// Calcular inicialmente para el anexo 27 (Octubre)
+calcularSueldo('27');
