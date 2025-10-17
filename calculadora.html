@@ -5,24 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Calculadora de Sueldo - Seguridad Privada</title>
+    <title>Calculadora de Sueldo - Seguridad Privada (ACTUALIZADA)</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
     
    <div class="tab-container">
         <div class="tabs">
-            <div class="tab active" onclick="showTab('anexo24')">julio</div>
-            <div class="tab" onclick="showTab('anexo25')">agosto</div>
-            <div class="tab" onclick="showTab('anexo26')">septiembre</div>
+            <div class="tab active" onclick="showTab('anexo27')">octubre</div>
+            <div class="tab" onclick="showTab('anexo28')">noviembre</div>
+            <div class="tab" onclick="showTab('anexo29')">diciembre</div>
         </div>
 
-        <!-- ANEXO 24 -->
-        <div id="anexo24" class="tab-content active">
-            <h1>Calculadora julio</h1>
+        <div id="anexo27" class="tab-content active">
+            <h1>Calculadora octubre</h1>
 
-            <label for="categoria24">Categoría:</label>
-            <select id="categoria24">
+            <label for="categoria27">Categoría:</label>
+            <select id="categoria27">
                 <option value="vigilador_general">Vigilador General</option>
                 <option value="vigilador_bombero">Vigilador Bombero</option>
                 <option value="administrativo">Administrativo</option>
@@ -34,59 +33,58 @@
                 <option value="control_admision">Control de Admisión y Permanencia General</option>
             </select>
 
-            <label for="sueldo_basico24">Sueldo Básico:</label>
-            <input id="sueldo_basico24" readonly type="text" />
+            <label for="sueldo_basico27">Sueldo Básico:</label>
+            <input id="sueldo_basico27" readonly type="text" />
 
-            <label for="antiguedad24">Años de Antigüedad:</label>
-            <input id="antiguedad24" type="number" min="0" step="1" />
+            <label for="antiguedad27">Años de Antigüedad:</label>
+            <input id="antiguedad27" type="number" min="0" step="1" oninput="calcularSueldo('27')" />
 
-            <label for="presentismo24">Presentismo:</label>
-            <input id="presentismo24" readonly type="text" />
+            <label for="presentismo27">Adicional por Presentismo:</label>
+            <input id="presentismo27" readonly type="text" />
                 
-            <label for="viatico24">Viático:</label>
-            <input id="viatico24" readonly type="text" />
+            <label for="viatico27">Viático No Remunerativo:</label>
+            <input id="viatico27" readonly type="text" />
 
-            <label for="adicional_no_remunerativo24">Adicional No Remunerativo:</label>
-            <input id="adicional_no_remunerativo24" readonly type="text" />
+            <label for="adicional_no_remunerativo27">Suma No Remunerativa:</label>
+            <input id="adicional_no_remunerativo27" readonly type="text" />
 
-            <label for="horas_nocturnas24">Horas Nocturnas:</label>
-            <input id="horas_nocturnas24" type="number" min="0" step="0.1" />
+            <label for="horas_nocturnas27">Horas Nocturnas:</label>
+            <input id="horas_nocturnas27" type="number" min="0" step="0.1" oninput="calcularSueldo('27')" />
 
-            <label for="horas_feriado24">Horas en Feriado:</label>
-            <input id="horas_feriado24" type="number" min="0" step="0.1" />
+            <label for="horas_feriado27">Horas en Feriado:</label>
+            <input id="horas_feriado27" type="number" min="0" step="0.1" oninput="calcularSueldo('27')" />
             
-            <label for="horas_al5024">Horas al 50%:</label>
-            <input id="horas_al5024" type="number" min="0" step="0.1" />
+            <label for="horas_al5027">Horas al 50%:</label>
+            <input id="horas_al5027" type="number" min="0" step="0.1" oninput="calcularSueldo('27')" />
 
-            <label for="horas_al10024">Horas al 100%:</label>
-            <input id="horas_al10024" type="number" min="0" step="0.1" />
+            <label for="horas_al10027">Horas al 100%:</label>
+            <input id="horas_al10027" type="number" min="0" step="0.1" oninput="calcularSueldo('27')" />
 
-            <label for="sindicato24">Afiliado al Sindicato:</label>
-            <select id="sindicato24">
-                <option value="si">Sí</option>
-                <option value="no">No</option>
+            <label for="sindicato27">Afiliado al Sindicato (Desc. 20%):</label>
+            <select id="sindicato27" onchange="calcularSueldo('27')">
+                <option value="si">Sí (20%)</option>
+                <option value="no">No (17%)</option>
             </select>
 
-            <button onclick="calcularSueldo('24')">Calcular</button>
+            <button onclick="calcularSueldo('27')">Recalcular</button>
 
             <div class="result-label">Resultados:</div>
 
-            <label for="sueldo_bruto24">Sueldo Bruto:</label>
-            <input id="sueldo_bruto24" readonly type="text" class="result-input" />
+            <label for="sueldo_bruto27">Sueldo Bruto:</label>
+            <input id="sueldo_bruto27" readonly type="text" class="result-input" />
 
-            <label for="descuento24">Descuento:</label>
-            <input id="descuento24" readonly type="text" class="result-input" />
+            <label for="descuento27">Total Descuentos:</label>
+            <input id="descuento27" readonly type="text" class="result-input" />
 
-            <label for="sueldo_neto24">Sueldo Neto:</label>
-            <input id="sueldo_neto24" readonly type="text" class="result-input" />
+            <label for="sueldo_neto27">Sueldo Neto:</label>
+            <input id="sueldo_neto27" readonly type="text" class="result-input" />
         </div>
 
-        <!-- ANEXO 25 -->
-        <div id="anexo25" class="tab-content">
-            <h1>Calculadora agosto</h1>
+        <div id="anexo28" class="tab-content">
+            <h1>Calculadora noviembre</h1>
 
-            <label for="categoria25">Categoría:</label>
-            <select id="categoria25">
+            <label for="categoria28">Categoría:</label>
+            <select id="categoria28">
                 <option value="vigilador_general">Vigilador General</option>
                 <option value="vigilador_bombero">Vigilador Bombero</option>
                 <option value="administrativo">Administrativo</option>
@@ -98,59 +96,58 @@
                 <option value="control_admision">Control de Admisión y Permanencia General</option>
             </select>
 
-            <label for="sueldo_basico25">Sueldo Básico:</label>
-            <input id="sueldo_basico25" readonly type="text" />
+            <label for="sueldo_basico28">Sueldo Básico:</label>
+            <input id="sueldo_basico28" readonly type="text" />
 
-            <label for="antiguedad25">Años de Antigüedad:</label>
-            <input id="antiguedad25" type="number" min="0" step="1" />
+            <label for="antiguedad28">Años de Antigüedad:</label>
+            <input id="antiguedad28" type="number" min="0" step="1" oninput="calcularSueldo('28')" />
 
-            <label for="presentismo25">Presentismo:</label>
-            <input id="presentismo25" readonly type="text" />
+            <label for="presentismo28">Adicional por Presentismo:</label>
+            <input id="presentismo28" readonly type="text" />
                 
-            <label for="viatico25">Viático:</label>
-            <input id="viatico25" readonly type="text" />
+            <label for="viatico28">Viático No Remunerativo:</label>
+            <input id="viatico28" readonly type="text" />
 
-            <label for="adicional_no_remunerativo25">Adicional No Remunerativo:</label>
-            <input id="adicional_no_remunerativo25" readonly type="text" />
+            <label for="adicional_no_remunerativo28">Suma No Remunerativa:</label>
+            <input id="adicional_no_remunerativo28" readonly type="text" />
 
-            <label for="horas_nocturnas25">Horas Nocturnas:</label>
-            <input id="horas_nocturnas25" type="number" min="0" step="0.1" />
+            <label for="horas_nocturnas28">Horas Nocturnas:</label>
+            <input id="horas_nocturnas28" type="number" min="0" step="0.1" oninput="calcularSueldo('28')" />
 
-            <label for="horas_feriado25">Horas en Feriado:</label>
-            <input id="horas_feriado25" type="number" min="0" step="0.1" />
+            <label for="horas_feriado28">Horas en Feriado:</label>
+            <input id="horas_feriado28" type="number" min="0" step="0.1" oninput="calcularSueldo('28')" />
             
-            <label for="horas_al5025">Horas al 50%:</label>
-            <input id="horas_al5025" type="number" min="0" step="0.1" />
+            <label for="horas_al5028">Horas al 50%:</label>
+            <input id="horas_al5028" type="number" min="0" step="0.1" oninput="calcularSueldo('28')" />
 
-            <label for="horas_al10025">Horas al 100%:</label>
-            <input id="horas_al10025" type="number" min="0" step="0.1" />
+            <label for="horas_al10028">Horas al 100%:</label>
+            <input id="horas_al10028" type="number" min="0" step="0.1" oninput="calcularSueldo('28')" />
 
-            <label for="sindicato25">Afiliado al Sindicato:</label>
-            <select id="sindicato25">
-                <option value="si">Sí</option>
-                <option value="no">No</option>
+            <label for="sindicato28">Afiliado al Sindicato (Desc. 20%):</label>
+            <select id="sindicato28" onchange="calcularSueldo('28')">
+                <option value="si">Sí (20%)</option>
+                <option value="no">No (17%)</option>
             </select>
 
-            <button onclick="calcularSueldo('25')">Calcular</button>
+            <button onclick="calcularSueldo('28')">Recalcular</button>
 
             <div class="result-label">Resultados:</div>
 
-            <label for="sueldo_bruto25">Sueldo Bruto:</label>
-            <input id="sueldo_bruto25" readonly type="text" class="result-input" />
+            <label for="sueldo_bruto28">Sueldo Bruto:</label>
+            <input id="sueldo_bruto28" readonly type="text" class="result-input" />
 
-            <label for="descuento25">Descuento:</label>
-            <input id="descuento25" readonly type="text" class="result-input" />
+            <label for="descuento28">Total Descuentos:</label>
+            <input id="descuento28" readonly type="text" class="result-input" />
 
-            <label for="sueldo_neto25">Sueldo Neto:</label>
-            <input id="sueldo_neto25" readonly type="text" class="result-input" />
+            <label for="sueldo_neto28">Sueldo Neto:</label>
+            <input id="sueldo_neto28" readonly type="text" class="result-input" />
         </div>
 
-        <!-- ANEXO 26 -->
-        <div id="anexo26" class="tab-content">
-            <h1>Calculadora septiembre</h1>
+        <div id="anexo29" class="tab-content">
+            <h1>Calculadora diciembre</h1>
 
-            <label for="categoria26">Categoría:</label>
-            <select id="categoria26">
+            <label for="categoria29">Categoría:</label>
+            <select id="categoria29">
                 <option value="vigilador_general">Vigilador General</option>
                 <option value="vigilador_bombero">Vigilador Bombero</option>
                 <option value="administrativo">Administrativo</option>
@@ -162,51 +159,53 @@
                 <option value="control_admision">Control de Admisión y Permanencia General</option>
             </select>
 
-            <label for="sueldo_basico26">Sueldo Básico:</label>
-            <input id="sueldo_basico26" readonly type="text" />
+            <label for="sueldo_basico29">Sueldo Básico:</label>
+            <input id="sueldo_basico29" readonly type="text" />
 
-            <label for="antiguedad26">Años de Antigüedad:</label>
-            <input id="antiguedad26" type="number" min="0" step="1" />
+            <label for="antiguedad29">Años de Antigüedad:</label>
+            <input id="antiguedad29" type="number" min="0" step="1" oninput="calcularSueldo('29')" />
 
-            <label for="presentismo26">Presentismo:</label>
-            <input id="presentismo26" readonly type="text" />
+            <label for="presentismo29">Adicional por Presentismo:</label>
+            <input id="presentismo29" readonly type="text" />
                 
-            <label for="viatico26">Viático:</label>
-            <input id="viatico26" readonly type="text" />
+            <label for="viatico29">Viático No Remunerativo:</label>
+            <input id="viatico29" readonly type="text" />
 
-            <label for="horas_nocturnas26">Horas Nocturnas:</label>
-            <input id="horas_nocturnas26" type="number" min="0" step="0.1" />
+            <label for="adicional_no_remunerativo29">Suma No Remunerativa:</label>
+            <input id="adicional_no_remunerativo29" readonly type="text" />
 
-            <label for="horas_feriado26">Horas en Feriado:</label>
-            <input id="horas_feriado26" type="number" min="0" step="0.1" />
+            <label for="horas_nocturnas29">Horas Nocturnas:</label>
+            <input id="horas_nocturnas29" type="number" min="0" step="0.1" oninput="calcularSueldo('29')" />
+
+            <label for="horas_feriado29">Horas en Feriado:</label>
+            <input id="horas_feriado29" type="number" min="0" step="0.1" oninput="calcularSueldo('29')" />
             
-            <label for="horas_al5026">Horas al 50%:</label>
-            <input id="horas_al5026" type="number" min="0" step="0.1" />
+            <label for="horas_al5029">Horas al 50%:</label>
+            <input id="horas_al5029" type="number" min="0" step="0.1" oninput="calcularSueldo('29')" />
 
-            <label for="horas_al10026">Horas al 100%:</label>
-            <input id="horas_al10026" type="number" min="0" step="0.1" />
+            <label for="horas_al10029">Horas al 100%:</label>
+            <input id="horas_al10029" type="number" min="0" step="0.1" oninput="calcularSueldo('29')" />
 
-            <label for="sindicato26">Afiliado al Sindicato:</label>
-            <select id="sindicato26">
-                <option value="si">Sí</option>
-                <option value="no">No</option>
+            <label for="sindicato29">Afiliado al Sindicato (Desc. 20%):</label>
+            <select id="sindicato29" onchange="calcularSueldo('29')">
+                <option value="si">Sí (20%)</option>
+                <option value="no">No (17%)</option>
             </select>
 
-            <button onclick="calcularSueldo('26')">Calcular</button>
+            <button onclick="calcularSueldo('29')">Recalcular</button>
 
             <div class="result-label">Resultados:</div>
 
-            <label for="sueldo_bruto26">Sueldo Bruto:</label>
-            <input id="sueldo_bruto26" readonly type="text" class="result-input" />
+            <label for="sueldo_bruto29">Sueldo Bruto:</label>
+            <input id="sueldo_bruto29" readonly type="text" class="result-input" />
 
-            <label for="descuento26">Descuento:</label>
-            <input id="descuento26" readonly type="text" class="result-input" />
+            <label for="descuento29">Total Descuentos:</label>
+            <input id="descuento29" readonly type="text" class="result-input" />
 
-            <label for="sueldo_neto26">Sueldo Neto:</label>
-            <input id="sueldo_neto26" readonly type="text" class="result-input" />
+            <label for="sueldo_neto29">Sueldo Neto:</label>
+            <input id="sueldo_neto29" readonly type="text" class="result-input" />
         </div>
     </div>
-    <script src="gions.js"></script>
     <script src="script.js"></script>
 </body>
-</html>
+    </html>
