@@ -16,102 +16,59 @@ function showTab(tabName) {
     }
 }
 
-function calcularSueldo(anexo) {
-    const categoria = document.getElementById(`categoria${anexo}`).value;
-    const sueldoBasico = document.getElementById(`sueldo_basico${anexo}`);
-    const antiguedad = document.getElementById(`antiguedad${anexo}`);
-    const presentismo = document.getElementById(`presentismo${anexo}`);
-    const horasFeriado = document.getElementById(`horas_feriado${anexo}`);
-    const horasNocturnas = document.getElementById(`horas_nocturnas${anexo}`);
-    const viatico = document.getElementById(`viatico${anexo}`);
-    const horasal50 = document.getElementById(`horas_al50${anexo}`);
-    const horasal100 = document.getElementById(`horas_al100${anexo}`);
-    const sindicato = document.getElementById(`sindicato${anexo}`).value;
+function calcularSueldo(mes) {
+    const categoria = document.getElementById(`categoria${mes}`).value;
+    const sueldoBasico = document.getElementById(`sueldo_basico${mes}`);
+    const antiguedad = document.getElementById(`antiguedad${mes}`);
+    const presentismo = document.getElementById(`presentismo${mes}`);
+    const horasFeriado = document.getElementById(`horas_feriado${mes}`);
+    const horasNocturnas = document.getElementById(`horas_nocturnas${mes}`);
+    const viatico = document.getElementById(`viatico${mes}`);
+    const horasal50 = document.getElementById(`horas_al50${mes}`);
+    const horasal100 = document.getElementById(`horas_al100${mes}`);
+    const sindicato = document.getElementById(`sindicato${mes}`).value;
 
     let sueldoCategoria, presentismoCategoria, viaticoCategoria;
-    let sumaNoRemunerativaCategoria = 0; // Solo Diciembre
+    let sumaNoRemunerativaCategoria = 0;
 
-    // Valores según cada anexo (solo Octubre, Noviembre, Diciembre)
-    if (anexo === '27') { // Oct-25 (Valores actualizados)
-        switch (categoria) {
-            case "vigilador_general":
-                sueldoCategoria = 817500; presentismoCategoria = 159600; viaticoCategoria = 473800; break;
-            case "vigilador_bombero":
-                sueldoCategoria = 871600; presentismoCategoria = 173000; viaticoCategoria = 473800; break;
-            case "administrativo":
-                sueldoCategoria = 896300; presentismoCategoria = 180000; viaticoCategoria = 473800; break;
-            case "vigilador_principal":
-                sueldoCategoria = 924100; presentismoCategoria = 186800; viaticoCategoria = 473800; break;
-            case "verificacion_eventos":
-                sueldoCategoria = 871600; presentismoCategoria = 173000; viaticoCategoria = 473800; break;
-            case "operador_monitoreo":
-                sueldoCategoria = 871600; presentismoCategoria = 173000; viaticoCategoria = 473800; break;
-            case "guia_tecnico":
-                sueldoCategoria = 896300; presentismoCategoria = 180000; viaticoCategoria = 473800; break;
-            case "instalador_seguridad":
-                sueldoCategoria = 924100; presentismoCategoria = 186800; viaticoCategoria = 473800; break;
-            case "control_admision":
-                sueldoCategoria = 817500; presentismoCategoria = 159600; viaticoCategoria = 473800; break;
-            default:
-                sueldoCategoria = 0; presentismoCategoria = 0; viaticoCategoria = 0; break;
-        }
-        // Suma No Remunerativa es 0 en Octubre.
-        sumaNoRemunerativaCategoria = 0;
+    // Configuración de valores según la imagen (Enero a Junio 2026)
+    const escala = {
+        "Enero": { viatico: 473800, noRem: 10000, 
+            vg: 867200, vb: 923700, adm: 949700, vp: 978900, cap: 867200, pres_vg: 165000, pres_alt: 178900, pres_adm: 186100, pres_vp: 193100 },
+        "Febrero": { viatico: 473800, noRem: 25000, 
+            vg: 876000, vb: 933600, adm: 960200, vp: 989900, cap: 876000, pres_vg: 165000, pres_alt: 178900, pres_adm: 186100, pres_vp: 193100 },
+        "Marzo": { viatico: 473800, noRem: 25000, 
+            vg: 884800, vb: 942900, adm: 969700, vp: 999800, cap: 884800, pres_vg: 165000, pres_alt: 178900, pres_adm: 186100, pres_vp: 193100 },
+        "Abril": { viatico: 480500, noRem: 25000, 
+            vg: 893650, vb: 952400, adm: 979500, vp: 1010300, cap: 893650, pres_vg: 165000, pres_alt: 178900, pres_adm: 186100, pres_vp: 193100 },
+        "Mayo": { viatico: 487000, noRem: 30000, 
+            vg: 902600, vb: 962300, adm: 989800, vp: 1020600, cap: 902600, pres_vg: 165000, pres_alt: 178900, pres_adm: 186100, pres_vp: 193100 },
+        "Junio": { viatico: 498000, noRem: 70000, 
+            vg: 911650, vb: 974100, adm: 1003000, vp: 1035200, cap: 911650, pres_vg: 165000, pres_alt: 178900, pres_adm: 186100, pres_vp: 193100 }
+    };
 
-    } else if (anexo === '28') { // Nov-25 (Valores actualizados)
-        switch (categoria) {
-            case "vigilador_general":
-                sueldoCategoria = 825600; presentismoCategoria = 159600; viaticoCategoria = 473800; break;
-            case "vigilador_bombero":
-                sueldoCategoria = 880000; presentismoCategoria = 173000; viaticoCategoria = 473800; break;
-            case "administrativo":
-                sueldoCategoria = 905000; presentismoCategoria = 180000; viaticoCategoria = 473800; break;
-            case "vigilador_principal":
-                sueldoCategoria = 933000; presentismoCategoria = 186800; viaticoCategoria = 473800; break;
-            case "verificacion_eventos":
-                sueldoCategoria = 880000; presentismoCategoria = 173000; viaticoCategoria = 473800; break;
-            case "operador_monitoreo":
-                sueldoCategoria = 880000; presentismoCategoria = 173000; viaticoCategoria = 473800; break;
-            case "guia_tecnico":
-                sueldoCategoria = 905000; presentismoCategoria = 180000; viaticoCategoria = 473800; break;
-            case "instalador_seguridad":
-                sueldoCategoria = 933000; presentismoCategoria = 186800; viaticoCategoria = 473800; break;
-            case "control_admision":
-                sueldoCategoria = 825600; presentismoCategoria = 159600; viaticoCategoria = 473800; break;
-            default:
-                sueldoCategoria = 0; presentismoCategoria = 0; viaticoCategoria = 0; break;
-        }
-        // Suma No Remunerativa es 0 en Noviembre.
-        sumaNoRemunerativaCategoria = 0;
+    const data = escala[mes];
+    if (!data) return;
 
-    } else if (anexo === '29') { // Dic-25 (Valores actualizados) - Incluye Suma No Remunerativa $25.000
-        sumaNoRemunerativaCategoria = 25000; // Suma No Remunerativa
-        switch (categoria) {
-            case "vigilador_general":
-                sueldoCategoria = 833600; presentismoCategoria = 159600; viaticoCategoria = 473800; break;
-            case "vigilador_bombero":
-                sueldoCategoria = 889500; presentismoCategoria = 173000; viaticoCategoria = 473800; break;
-            case "administrativo":
-                sueldoCategoria = 915200; presentismoCategoria = 180000; viaticoCategoria = 473800; break;
-            case "vigilador_principal":
-                sueldoCategoria = 944000; presentismoCategoria = 186800; viaticoCategoria = 473800; break;
-            case "verificacion_eventos":
-                sueldoCategoria = 889500; presentismoCategoria = 173000; viaticoCategoria = 473800; break;
-            case "operador_monitoreo":
-                sueldoCategoria = 889500; presentismoCategoria = 173000; viaticoCategoria = 473800; break;
-            case "guia_tecnico":
-                sueldoCategoria = 915200; presentismoCategoria = 180000; viaticoCategoria = 473800; break;
-            case "instalador_seguridad":
-                sueldoCategoria = 944000; presentismoCategoria = 186800; viaticoCategoria = 473800; break;
-            case "control_admision":
-                sueldoCategoria = 833600; presentismoCategoria = 159600; viaticoCategoria = 473800; break;
-            default:
-                sueldoCategoria = 0; presentismoCategoria = 0; viaticoCategoria = 0; sumaNoRemunerativaCategoria = 0; break;
-        }
-    } else {
-        // Anexo no reconocido
-        sueldoCategoria = 0; presentismoCategoria = 0; viaticoCategoria = 0; sumaNoRemunerativaCategoria = 0;
-        return;
+    viaticoCategoria = data.viatico;
+    sumaNoRemunerativaCategoria = data.noRem;
+
+    switch (categoria) {
+        case "vigilador_general":
+        case "control_admision":
+            sueldoCategoria = data.vg; presentismoCategoria = data.pres_vg; break;
+        case "vigilador_bombero":
+        case "verificacion_eventos":
+        case "operador_monitoreo":
+            sueldoCategoria = data.vb; presentismoCategoria = data.pres_alt; break;
+        case "administrativo":
+        case "guia_tecnico":
+            sueldoCategoria = data.adm; presentismoCategoria = data.pres_adm; break;
+        case "vigilador_principal":
+        case "instalador_seguridad":
+            sueldoCategoria = data.vp; presentismoCategoria = data.pres_vp; break;
+        default:
+            sueldoCategoria = 0; presentismoCategoria = 0; break;
     }
 
     // Mostrar valores base
@@ -119,10 +76,8 @@ function calcularSueldo(anexo) {
     presentismo.value = formatCurrency(presentismoCategoria);
     viatico.value = formatCurrency(viaticoCategoria);
     
-    // Muestra la suma no remunerativa (0 en Oct/Nov, 25000 en Dic)
-    const adicionalNoRemunerativo = document.getElementById(`adicional_no_remunerativo${anexo}`);
+    const adicionalNoRemunerativo = document.getElementById(`adicional_no_remunerativo${mes}`);
     if (adicionalNoRemunerativo) adicionalNoRemunerativo.value = formatCurrency(sumaNoRemunerativaCategoria);
-
 
     // Cálculos
     const antiguedadValue = parseFloat(antiguedad.value) || 0;
@@ -141,20 +96,19 @@ function calcularSueldo(anexo) {
     const horasal100Value = parseFloat(horasal100.value) || 0;
     const sueldoal100 = (valorHoraNormal * 2) * horasal100Value;
 
-    // Sueldo bruto (Siempre incluye la suma no remunerativa, que es 0 en Oct/Nov)
+    // Sueldo bruto
     const sueldoBrutoValue = sueldoCategoria + sueldoAntiguedad + sueldoFeriado + sueldoNocturno + sueldoal50 + sueldoal100 + presentismoCategoria + viaticoCategoria + sumaNoRemunerativaCategoria;
 
-    // Descuento sobre la base remunerativa (sin viático y sin suma no remunerativa)
+    // Descuento sobre base remunerativa
     const baseDescuento = sueldoCategoria + sueldoAntiguedad + sueldoFeriado + sueldoNocturno + sueldoal50 + sueldoal100 + presentismoCategoria;
     const descuento = (sindicato === "si" ? 0.20 : 0.17) * baseDescuento;
 
-    // Sueldo neto (bruto - descuento)
     const sueldoNeto = sueldoBrutoValue - descuento;
 
     // Mostrar resultados
-    document.getElementById(`sueldo_bruto${anexo}`).value = formatCurrency(sueldoBrutoValue);
-    document.getElementById(`descuento${anexo}`).value = formatCurrency(descuento);
-    document.getElementById(`sueldo_neto${anexo}`).value = formatCurrency(sueldoNeto);
+    document.getElementById(`sueldo_bruto${mes}`).value = formatCurrency(sueldoBrutoValue);
+    document.getElementById(`descuento${mes}`).value = formatCurrency(descuento);
+    document.getElementById(`sueldo_neto${mes}`).value = formatCurrency(sueldoNeto);
 }
 
 function formatCurrency(amount) {
@@ -165,28 +119,16 @@ function formatCurrency(amount) {
     }).format(amount);
 }
 
-// Event listeners para cálculo automático (solo '27', '28', '29')
-['27', '28', '29'].forEach(anexo => {
-    const categoriaSelect = document.getElementById(`categoria${anexo}`);
-    if (categoriaSelect) {
-        categoriaSelect.addEventListener("change", () => calcularSueldo(anexo));
-        // Recalcular cuando se modifican los inputs que afectan el cálculo
-        const inputsToRecalculate = [
-            `antiguedad${anexo}`, `horas_feriado${anexo}`, `horas_nocturnas${anexo}`,
-            `horas_al50${anexo}`, `horas_al100${anexo}`, `sindicato${anexo}`
-        ];
-        inputsToRecalculate.forEach(id => {
-            const inputElement = document.getElementById(id);
-            if (inputElement) {
-                inputElement.addEventListener("change", () => calcularSueldo(anexo));
-                // Para inputs numéricos, se usa el evento 'input' para cálculos en tiempo real
-                if (inputElement.type === 'number') {
-                    inputElement.addEventListener("input", () => calcularSueldo(anexo));
-                }
+// Event listeners para cálculo automático
+['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'].forEach(mes => {
+    const container = document.getElementById(mes.toLowerCase());
+    if (container) {
+        const inputs = container.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            if (input.id.includes(mes)) {
+                input.addEventListener(input.tagName === 'SELECT' ? "change" : "input", () => calcularSueldo(mes));
             }
         });
     }
 });
 
-// Calcular inicialmente para el anexo 27 (Octubre)
-calcularSueldo('27');
