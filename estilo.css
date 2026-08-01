@@ -347,121 +347,230 @@ body {
 
 
 /* --- SECCIÓN CALCULADORA --- */
-.Calculadora {
-    padding-top: 100px;
-    background-color: #121212;
-    color: #fff;
-    text-align: center;
-}
-.Calculadora.contenido-seccion {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-.tab-container {
-    max-width: 800px;
-    margin: 20px auto;
-    margin-top: 100px; /* CORRECCIÓN: Agregar margen superior para compensar la cabecera */
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+/* --- ESTILOS ASISTENTE VIGILADOR --- */
+.chatbot-container {
+    max-width: 450px;
+    margin: 30px auto;
+    background: #1e293b;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     overflow: hidden;
+    font-family: 'Work Sans', sans-serif;
+    color: #fff;
+    border: 2px solid #334155;
 }
 
-.tabs {
+/* Header del Avatar */
+.avatar-header {
+    background: #0f172a;
+    padding: 15px 20px;
     display: flex;
-    background-color: #007bff;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #334155;
 }
 
-.tab {
-    flex: 1;
-    padding: 15px;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    border-right: 1px solid rgba(255,255,255,0.2);
-    transition: background-color 0.3s;
+.vigilador-avatar {
+    position: relative;
+    width: 65px;
+    height: 65px;
+    background: #1e293b;
+    border-radius: 50%;
+    border: 3px solid #2563eb;
+    padding: 2px;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
 }
 
-.tab:last-child {
-    border-right: none;
+.avatar-svg {
+    width: 100%;
+    height: 100%;
 }
 
-.tab.active, .tab:hover {
-    background-color: #0056b3;
+.status-dot {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    background: #22c55e;
+    border: 2px solid #0f172a;
+    border-radius: 50%;
 }
 
-.tab-content {
+.vigilador-info h3 {
+    margin: 0;
+    font-size: 17px;
+    color: #f8fafc;
+}
+
+.vigilador-info p {
+    margin: 0;
+    font-size: 12px;
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+/* Burbuja de Diálogo (Speech Bubble) */
+.speech-bubble-container {
+    padding: 18px 20px 10px 20px;
+}
+
+.speech-bubble {
+    position: relative;
+    background: #2563eb;
+    color: #ffffff;
+    padding: 14px 18px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    transition: all 0.3s ease;
+}
+
+/* Triángulo del bocadillo/globo apuntando al avatar */
+.speech-bubble::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 30px;
+    border-width: 0 10px 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent #2563eb transparent;
+}
+
+/* Barra de progreso */
+.progress-bar-container {
+    width: 100%;
+    height: 5px;
+    background: #334155;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 20%;
+    background: #38bdf8;
+    transition: width 0.4s ease;
+}
+
+/* Cuerpo del Chat */
+.chat-body {
+    padding: 20px;
+}
+
+.chat-step {
     display: none;
-    padding: 30px;
+    animation: fadeInStep 0.4s ease-out;
 }
 
-.tab-content.active {
+.chat-step.active {
     display: block;
 }
 
-.tab-content h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 30px;
-}
-
-.tab-content label {
+.user-input-group label {
     display: block;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
+    font-size: 13px;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    color: #94a3b8;
+    font-weight: 600;
 }
 
-.tab-content input, .tab-content select {
+.user-input-group input, 
+.user-input-group select {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    box-sizing: border-box;
+    padding: 12px;
+    background: #0f172a;
+    border: 1.5px solid #475569;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
 }
 
-.tab-content input[readonly] {
-    background-color: #f5f5f5;
-    color: #666;
+.user-input-group input:focus, 
+.user-input-group select:focus {
+    border-color: #38bdf8;
 }
 
-.tab-content button {
+/* Botones */
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-next, .btn-prev, .btn-calc, .btn-restart {
     width: 100%;
-    padding: 15px;
-    background-color: #007bff;
-    color: white;
+    padding: 12px;
     border: none;
-    border-radius: 5px;
-    font-size: 18px;
+    border-radius: 10px;
     font-weight: bold;
-    margin-top: 20px;
+    font-size: 15px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    margin-top: 18px;
+    transition: transform 0.1s, background 0.2s;
 }
 
-.tab-content button:hover {
-    background-color: #0056b3;
+.btn-next:active, .btn-prev:active, .btn-calc:active {
+    transform: scale(0.98);
 }
 
-.result-label {
-    margin-top: 30px;
-    margin-bottom: 15px;
+.btn-next { background: #22c55e; color: #fff; }
+.btn-next:hover { background: #16a34a; }
+
+.btn-prev { background: #475569; color: #fff; }
+.btn-prev:hover { background: #334155; }
+
+.btn-calc { background: #38bdf8; color: #0f172a; }
+.btn-calc:hover { background: #0284c7; color: #fff; }
+
+.btn-restart { background: #eab308; color: #0f172a; }
+.btn-restart:hover { background: #ca8a04; color: #fff; }
+
+/* Tarjeta de Resultados */
+.result-card {
+    background: #0f172a;
+    border-radius: 14px;
+    padding: 20px;
+    border: 1px solid #334155;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.result-item.descontado strong { color: #f87171; }
+
+.divider {
+    border: none;
+    border-top: 1px solid #334155;
+    margin: 12px 0;
+}
+
+.result-item.neto {
     font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-    border-top: 2px solid #007bff;
-    padding-top: 15px;
+    color: #4ade80;
 }
 
-.result-input {
-    background-color: #e8f4f8 !important;
-    font-weight: bold;
-    color: #333 !important;
+.details-box {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed #334155;
+    font-size: 12px;
+    color: #94a3b8;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+@keyframes fadeInStep {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 
