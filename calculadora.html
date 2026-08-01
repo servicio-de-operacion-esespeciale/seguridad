@@ -4,227 +4,177 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Sueldo - Seguridad Privada (ACTUALIZADA)</title>
+    <title>Calculadora de Sueldo - Asistente Vigilador</title>
     <link rel="stylesheet" href="estilo.css"> 
 </head>
 <body>
+
+<div class="chatbot-container">
     
-<div class="tab-container">
-    <div class="tabs">
-        <div class="tab active" onclick="showTab('enero')">Enero</div>
-        <div class="tab" onclick="showTab('febrero')">Febrero</div>
-        <div class="tab" onclick="showTab('marzo')">Marzo</div>
-        <div class="tab" onclick="showTab('abril')">Abril</div>
-        <div class="tab" onclick="showTab('mayo')">Mayo</div>
-        <div class="tab" onclick="showTab('junio')">Junio</div>
+    <!-- Encabezado con Avatar del Vigilador -->
+    <div class="avatar-header">
+        <div class="vigilador-avatar">
+            <!-- Icono SVG Ilustrativo de Vigilador / Guardia de Seguridad -->
+            <svg viewBox="0 0 100 100" class="avatar-svg">
+                <!-- Gorra / Boina de Guardia -->
+                <path d="M 25 38 Q 50 18 75 38 L 80 44 Q 50 36 20 44 Z" fill="#1e293b"/>
+                <ellipse cx="50" cy="38" rx="28" ry="12" fill="#0f172a"/>
+                <path d="M 45 32 L 50 25 L 55 32 Z" fill="#f59e0b"/> <!-- Placa / Escudo de Gorra -->
+                <circle cx="50" cy="30" r="3" fill="#fbbf24"/>
+                <path d="M 20 44 Q 50 48 80 44 L 82 48 Q 50 54 18 48 Z" fill="#0f172a"/> <!-- Visera -->
+                
+                <!-- Cara -->
+                <path d="M 30 46 C 30 70 70 70 70 46 Z" fill="#fbcfe8"/>
+                
+                <!-- Ojos y Sonrisa -->
+                <circle cx="40" cy="52" r="3" fill="#1e293b"/>
+                <circle cx="60" cy="52" r="3" fill="#1e293b"/>
+                <path d="M 43 60 Q 50 66 57 60" stroke="#1e293b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                
+                <!-- Uniforme / Camisa y Corbata -->
+                <path d="M 20 72 L 32 64 L 50 75 L 68 64 L 80 72 L 85 100 L 15 100 Z" fill="#2563eb"/> <!-- Camisa Azul -->
+                <path d="M 46 64 L 54 64 L 52 88 L 50 92 L 48 88 Z" fill="#0f172a"/> <!-- Corbata -->
+                <path d="M 30 64 L 38 72 L 30 80 Z" fill="#e2e8f0"/> <!-- Cuello Izq -->
+                <path d="M 70 64 L 62 72 L 70 80 Z" fill="#e2e8f0"/> <!-- Cuello Der -->
+                <path d="M 22 75 L 30 77 L 22 88 Z" fill="#fbbf24"/> <!-- Escudo Hombro -->
+            </svg>
+            <span class="status-dot"></span>
+        </div>
+        <div class="vigilador-info">
+            <h3>MATY</h3>
+            <p>Seguridad Privada </p>
+        </div>
     </div>
 
-    <div id="enero" class="tab-content active">
-        <h1>Calculadora Enero 2026</h1>
-        <label>Categoría:</label>
-        <select id="categoriaEnero" onchange="calcularSueldo('Enero')">
-            <option value="vigilador_general">Vigilador General</option>
-            <option value="vigilador_bombero">Vigilador Bombero</option>
-            <option value="administrativo">Administrativo</option>
-            <option value="vigilador_principal">Vigilador Principal</option>
-            <option value="verificacion_eventos">Verificación Eventos</option>
-            <option value="operador_monitoreo">Operador de Monitoreo</option>
-            <option value="guia_tecnico">Guía Técnico</option>
-            <option value="instalador_seguridad">Instalador de Seguridad Electrónica</option>
-            <option value="control_admision">Control de Admisión y Permanencia</option>
-        </select>
-        <label>Sueldo Básico:</label> <input id="sueldo_basicoEnero" readonly type="text" />
-        <label>Antigüedad (Años):</label> <input id="antiguedadEnero" type="number" oninput="calcularSueldo('Enero')" />
-        <label>Presentismo:</label> <input id="presentismoEnero" readonly type="text" />
-        <label>Viático:</label> <input id="viaticoEnero" readonly type="text" />
-        <label>No Remunerativo:</label> <input id="adicional_no_remunerativoEnero" readonly type="text" />
-        <label>Horas Nocturnas:</label> <input id="horas_nocturnasEnero" type="number" oninput="calcularSueldo('Enero')" />
-        <label>Horas Feriado:</label> <input id="horas_feriadoEnero" type="number" oninput="calcularSueldo('Enero')" />
-        <label>Horas al 50%:</label> <input id="horas_al50Enero" type="number" oninput="calcularSueldo('Enero')" />
-        <label>Horas al 100%:</label> <input id="horas_al100Enero" type="number" oninput="calcularSueldo('Enero')" />
-        <label>Afiliado Sindicato:</label>
-        <select id="sindicatoEnero" onchange="calcularSueldo('Enero')">
-            <option value="si">Sí (20%)</option>
-            <option value="no">No (17%)</option>
-        </select>
-
-        <div class="result-label">Resultados Enero:</div>
-        <label>Sueldo Bruto:</label> <input id="sueldo_brutoEnero" readonly type="text" class="result-input" />
-        <label>Descuentos:</label> <input id="descuentoEnero" readonly type="text" class="result-input" />
-        <label>Sueldo Neto:</label> <input id="sueldo_netoEnero" readonly type="text" class="result-input" />
+    <!-- Burbuja de Diálogo de la Mascota/Vigilador -->
+    <div class="speech-bubble-container">
+        <div class="speech-bubble" id="speechBubble">
+            ¡Hola, compa! 👋 Elige el mes a liquidar y tu categoría laboral.
+        </div>
     </div>
 
-    <div id="febrero" class="tab-content">
-        <h1>Calculadora Febrero 2026</h1>
-        <label>Categoría:</label>
-        <select id="categoriaFebrero" onchange="calcularSueldo('Febrero')">
-            <option value="vigilador_general">Vigilador General</option>
-            <option value="vigilador_bombero">Vigilador Bombero</option>
-            <option value="administrativo">Administrativo</option>
-            <option value="vigilador_principal">Vigilador Principal</option>
-            <option value="verificacion_eventos">Verificación Eventos</option>
-            <option value="operador_monitoreo">Operador de Monitoreo</option>
-            <option value="guia_tecnico">Guía Técnico</option>
-            <option value="instalador_seguridad">Instalador de Seguridad Electrónica</option>
-            <option value="control_admision">Control de Admisión y Permanencia</option>
-        </select>
-        <label>Sueldo Básico:</label> <input id="sueldo_basicoFebrero" readonly type="text" />
-        <label>Antigüedad:</label> <input id="antiguedadFebrero" type="number" oninput="calcularSueldo('Febrero')" />
-        <label>Presentismo:</label> <input id="presentismoFebrero" readonly type="text" />
-        <label>Viático:</label> <input id="viaticoFebrero" readonly type="text" />
-        <label>No Remunerativo:</label> <input id="adicional_no_remunerativoFebrero" readonly type="text" />
-        <label>Horas Nocturnas:</label> <input id="horas_nocturnasFebrero" type="number" oninput="calcularSueldo('Febrero')" />
-        <label>Horas Feriado:</label> <input id="horas_feriadoFebrero" type="number" oninput="calcularSueldo('Febrero')" />
-        <label>Horas al 50%:</label> <input id="horas_al50Febrero" type="number" oninput="calcularSueldo('Febrero')" />
-        <label>Horas al 100%:</label> <input id="horas_al100Febrero" type="number" oninput="calcularSueldo('Febrero')" />
-        <label>Sindicato:</label>
-        <select id="sindicatoFebrero" onchange="calcularSueldo('Febrero')">
-            <option value="si">Sí (20%)</option>
-            <option value="no">No (17%)</option>
-        </select>
-        <div class="result-label">Resultados Febrero:</div>
-        <label>Sueldo Bruto:</label> <input id="sueldo_brutoFebrero" readonly type="text" class="result-input" />
-        <label>Descuentos:</label> <input id="descuentoFebrero" readonly type="text" class="result-input" />
-        <label>Sueldo Neto:</label> <input id="sueldo_netoFebrero" readonly type="text" class="result-input" />
+    <!-- Barra de progreso -->
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
     </div>
 
-    <div id="marzo" class="tab-content">
-        <h1>Calculadora Marzo 2026</h1>
-        <label>Categoría:</label>
-        <select id="categoriaMarzo" onchange="calcularSueldo('Marzo')">
-            <option value="vigilador_general">Vigilador General</option>
-            <option value="vigilador_bombero">Vigilador Bombero</option>
-            <option value="administrativo">Administrativo</option>
-            <option value="vigilador_principal">Vigilador Principal</option>
-            <option value="verificacion_eventos">Verificación Eventos</option>
-            <option value="operador_monitoreo">Operador de Monitoreo</option>
-            <option value="guia_tecnico">Guía Técnico</option>
-            <option value="instalador_seguridad">Instalador de Seguridad Electrónica</option>
-            <option value="control_admision">Control de Admisión y Permanencia</option>
-        </select>
-        <label>Sueldo Básico:</label> <input id="sueldo_basicoMarzo" readonly type="text" />
-        <label>Antigüedad:</label> <input id="antiguedadMarzo" type="number" oninput="calcularSueldo('Marzo')" />
-        <label>Presentismo:</label> <input id="presentismoMarzo" readonly type="text" />
-        <label>Viático:</label> <input id="viaticoMarzo" readonly type="text" />
-        <label>No Remunerativo:</label> <input id="adicional_no_remunerativoMarzo" readonly type="text" />
-        <label>Horas Nocturnas:</label> <input id="horas_nocturnasMarzo" type="number" oninput="calcularSueldo('Marzo')" />
-        <label>Horas Feriado:</label> <input id="horas_feriadoMarzo" type="number" oninput="calcularSueldo('Marzo')" />
-        <label>Horas al 50%:</label> <input id="horas_al50Marzo" type="number" oninput="calcularSueldo('Marzo')" />
-        <label>Horas al 100%:</label> <input id="horas_al100Marzo" type="number" oninput="calcularSueldo('Marzo')" />
-        <label>Sindicato:</label>
-        <select id="sindicatoMarzo" onchange="calcularSueldo('Marzo')">
-            <option value="si">Sí (20%)</option>
-            <option value="no">No (17%)</option>
-        </select>
-        <div class="result-label">Resultados Marzo:</div>
-        <label>Sueldo Bruto:</label> <input id="sueldo_brutoMarzo" readonly type="text" class="result-input" />
-        <label>Descuentos:</label> <input id="descuentoMarzo" readonly type="text" class="result-input" />
-        <label>Sueldo Neto:</label> <input id="sueldo_netoMarzo" readonly type="text" class="result-input" />
-    </div>
+    <!-- Cuerpo Interactivo -->
+    <div class="chat-body">
+        
+        <!-- Paso 1: Mes y Categoría (2° Semestre 2026) -->
+        <div class="chat-step active" id="step1">
+            <div class="user-input-group">
+                <label for="mes">Mes a calcular :</label>
+                <select id="mes">
+                    <option value="Julio">Julio 2026</option>
+                    <option value="Agosto">Agosto 2026</option>
+                    <option value="Septiembre">Septiembre 2026</option>
+                    <option value="Octubre">Octubre 2026</option>
+                    <option value="Noviembre">Noviembre 2026</option>
+                    <option value="Diciembre">Diciembre 2026</option>
+                </select>
 
-    <div id="abril" class="tab-content">
-        <h1>Calculadora Abril 2026</h1>
-        <label>Categoría:</label>
-        <select id="categoriaAbril" onchange="calcularSueldo('Abril')">
-            <option value="vigilador_general">Vigilador General</option>
-            <option value="vigilador_bombero">Vigilador Bombero</option>
-            <option value="administrativo">Administrativo</option>
-            <option value="vigilador_principal">Vigilador Principal</option>
-            <option value="verificacion_eventos">Verificación Eventos</option>
-            <option value="operador_monitoreo">Operador de Monitoreo</option>
-            <option value="guia_tecnico">Guía Técnico</option>
-            <option value="instalador_seguridad">Instalador de Seguridad Electrónica</option>
-            <option value="control_admision">Control de Admisión y Permanencia</option>
-        </select>
-        <label>Sueldo Básico:</label> <input id="sueldo_basicoAbril" readonly type="text" />
-        <label>Antigüedad:</label> <input id="antiguedadAbril" type="number" oninput="calcularSueldo('Abril')" />
-        <label>Presentismo:</label> <input id="presentismoAbril" readonly type="text" />
-        <label>Viático:</label> <input id="viaticoAbril" readonly type="text" />
-        <label>No Remunerativo:</label> <input id="adicional_no_remunerativoAbril" readonly type="text" />
-        <label>Horas Nocturnas:</label> <input id="horas_nocturnasAbril" type="number" oninput="calcularSueldo('Abril')" />
-        <label>Horas Feriado:</label> <input id="horas_feriadoAbril" type="number" oninput="calcularSueldo('Abril')" />
-        <label>Horas al 50%:</label> <input id="horas_al50Abril" type="number" oninput="calcularSueldo('Abril')" />
-        <label>Horas al 100%:</label> <input id="horas_al100Abril" type="number" oninput="calcularSueldo('Abril')" />
-        <label>Sindicato:</label>
-        <select id="sindicatoAbril" onchange="calcularSueldo('Abril')">
-            <option value="si">Sí (20%)</option>
-            <option value="no">No (17%)</option>
-        </select>
-        <div class="result-label">Resultados Abril:</div>
-        <label>Sueldo Bruto:</label> <input id="sueldo_brutoAbril" readonly type="text" class="result-input" />
-        <label>Descuentos:</label> <input id="descuentoAbril" readonly type="text" class="result-input" />
-        <label>Sueldo Neto:</label> <input id="sueldo_netoAbril" readonly type="text" class="result-input" />
-    </div>
+                <label for="categoria">Tu Categoría Laboral:</label>
+                <select id="categoria">
+                    <option value="vigilador_general">Vigilador General</option>
+                    <option value="vigilador_bombero">Vigilador Bombero</option>
+                    <option value="administrativo">Administrativo</option>
+                    <option value="vigilador_principal">Vigilador Principal</option>
+                    <option value="verificacion_eventos">Verificación Eventos</option>
+                    <option value="operador_monitoreo">Operador de Monitoreo</option>
+                    <option value="guia_tecnico">Guía Técnico</option>
+                    <option value="instalador_seguridad">Instalador de Seguridad Electrónica</option>
+                    <option value="control_admision">Control de Admisión y Permanencia</option>
+                </select>
+                
+                <button class="btn-next" onclick="nextStep(2)">Siguiente ➔</button>
+            </div>
+        </div>
 
-    <div id="mayo" class="tab-content">
-        <h1>Calculadora Mayo 2026</h1>
-        <label>Categoría:</label>
-        <select id="categoriaMayo" onchange="calcularSueldo('Mayo')">
-            <option value="vigilador_general">Vigilador General</option>
-            <option value="vigilador_bombero">Vigilador Bombero</option>
-            <option value="administrativo">Administrativo</option>
-            <option value="vigilador_principal">Vigilador Principal</option>
-            <option value="verificacion_eventos">Verificación Eventos</option>
-            <option value="operador_monitoreo">Operador de Monitoreo</option>
-            <option value="guia_tecnico">Guía Técnico</option>
-            <option value="instalador_seguridad">Instalador de Seguridad Electrónica</option>
-            <option value="control_admision">Control de Admisión y Permanencia</option>
-        </select>
-        <label>Sueldo Básico:</label> <input id="sueldo_basicoMayo" readonly type="text" />
-        <label>Antigüedad:</label> <input id="antiguedadMayo" type="number" oninput="calcularSueldo('Mayo')" />
-        <label>Presentismo:</label> <input id="presentismoMayo" readonly type="text" />
-        <label>Viático:</label> <input id="viaticoMayo" readonly type="text" />
-        <label>No Remunerativo:</label> <input id="adicional_no_remunerativoMayo" readonly type="text" />
-        <label>Horas Nocturnas:</label> <input id="horas_nocturnasMayo" type="number" oninput="calcularSueldo('Mayo')" />
-        <label>Horas Feriado:</label> <input id="horas_feriadoMayo" type="number" oninput="calcularSueldo('Mayo')" />
-        <label>Horas al 50%:</label> <input id="horas_al50Mayo" type="number" oninput="calcularSueldo('Mayo')" />
-        <label>Horas al 100%:</label> <input id="horas_al100Mayo" type="number" oninput="calcularSueldo('Mayo')" />
-        <label>Sindicato:</label>
-        <select id="sindicatoMayo" onchange="calcularSueldo('Mayo')">
-            <option value="si">Sí (20%)</option>
-            <option value="no">No (17%)</option>
-        </select>
-        <div class="result-label">Resultados Mayo:</div>
-        <label>Sueldo Bruto:</label> <input id="sueldo_brutoMayo" readonly type="text" class="result-input" />
-        <label>Descuentos:</label> <input id="descuentoMayo" readonly type="text" class="result-input" />
-        <label>Sueldo Neto:</label> <input id="sueldo_netoMayo" readonly type="text" class="result-input" />
-    </div>
+        <!-- Paso 2: Antigüedad y Descuentos -->
+        <div class="chat-step" id="step2">
+            <div class="user-input-group">
+                <label for="antiguedad">Años de Antigüedad:</label>
+                <input type="number" id="antiguedad" placeholder="Ej: 3" min="0" value="0">
 
-    <div id="junio" class="tab-content">
-        <h1>Calculadora Junio 2026</h1>
-        <label>Categoría:</label>
-        <select id="categoriaJunio" onchange="calcularSueldo('Junio')">
-            <option value="vigilador_general">Vigilador General</option>
-            <option value="vigilador_bombero">Vigilador Bombero</option>
-            <option value="administrativo">Administrativo</option>
-            <option value="vigilador_principal">Vigilador Principal</option>
-            <option value="verificacion_eventos">Verificación Eventos</option>
-            <option value="operador_monitoreo">Operador de Monitoreo</option>
-            <option value="guia_tecnico">Guía Técnico</option>
-            <option value="instalador_seguridad">Instalador de Seguridad Electrónica</option>
-            <option value="control_admision">Control de Admisión y Permanencia</option>
-        </select>
-        <label>Sueldo Básico:</label> <input id="sueldo_basicoJunio" readonly type="text" />
-        <label>Antigüedad:</label> <input id="antiguedadJunio" type="number" oninput="calcularSueldo('Junio')" />
-        <label>Presentismo:</label> <input id="presentismoJunio" readonly type="text" />
-        <label>Viático:</label> <input id="viaticoJunio" readonly type="text" />
-        <label>No Remunerativo:</label> <input id="adicional_no_remunerativoJunio" readonly type="text" />
-        <label>Horas Nocturnas:</label> <input id="horas_nocturnasJunio" type="number" oninput="calcularSueldo('Junio')" />
-        <label>Horas Feriado:</label> <input id="horas_feriadoJunio" type="number" oninput="calcularSueldo('Junio')" />
-        <label>Horas al 50%:</label> <input id="horas_al50Junio" type="number" oninput="calcularSueldo('Junio')" />
-        <label>Horas al 100%:</label> <input id="horas_al100Junio" type="number" oninput="calcularSueldo('Junio')" />
-        <label>Sindicato:</label>
-        <select id="sindicatoJunio" onchange="calcularSueldo('Junio')">
-            <option value="si">Sí (20%)</option>
-            <option value="no">No (17%)</option>
-        </select>
-        <div class="result-label">Resultados Junio:</div>
-        <label>Sueldo Bruto:</label> <input id="sueldo_brutoJunio" readonly type="text" class="result-input" />
-        <label>Descuentos:</label> <input id="descuentoJunio" readonly type="text" class="result-input" />
-        <label>Sueldo Neto:</label> <input id="sueldo_netoJunio" readonly type="text" class="result-input" />
+                <label for="sindicato">Porcentaje de Descuento:</label>
+                <select id="sindicato">
+                    <option value="afiliado">Afiliado (20% de descuento)</option>
+                    <option value="no_afiliado">No Afiliado (19% de descuento)</option>
+                    <option value="solo_ley">Solo Ley (17% de descuento)</option>
+                </select>
+
+                <div class="btn-group">
+                    <button class="btn-prev" onclick="nextStep(1)">⬅ Atrás</button>
+                    <button class="btn-next" onclick="nextStep(3)">Siguiente ➔</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paso 3: Horas Feriado y Nocturnas -->
+        <div class="chat-step" id="step3">
+            <div class="user-input-group">
+                <label for="horas_nocturnas">Horas Nocturnas del mes:</label>
+                <input type="number" id="horas_nocturnas" placeholder="0" min="0" value="0">
+
+                <label for="horas_feriado">Horas Feriado trabajadas:</label>
+                <input type="number" id="horas_feriado" placeholder="0" min="0" value="0">
+
+                <div class="btn-group">
+                    <button class="btn-prev" onclick="nextStep(2)">⬅ Atrás</button>
+                    <button class="btn-next" onclick="nextStep(4)">Siguiente ➔</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paso 4: Horas Extras 50% y 100% -->
+        <div class="chat-step" id="step4">
+            <div class="user-input-group">
+                <label for="horas_al50">Horas Extras al 50%:</label>
+                <input type="number" id="horas_al50" placeholder="0" min="0" value="0">
+
+                <label for="horas_al100">Horas Extras al 100%:</label>
+                <input type="number" id="horas_al100" placeholder="0" min="0" value="0">
+
+                <div class="btn-group">
+                    <button class="btn-prev" onclick="nextStep(3)">⬅ Atrás</button>
+                    <button class="btn-next btn-calc" onclick="procesarCalculo()">Calcular Sueldo 🧮</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paso 5: Resultado Final -->
+        <div class="chat-step" id="step5">
+            <div class="result-card">
+                <div class="result-item">
+                    <span>Sueldo Bruto:</span>
+                    <strong id="res_bruto">$0,00</strong>
+                </div>
+                <div class="result-item descontado">
+                    <span>Descuentos:</span>
+                    <strong id="res_descuento">-$0,00</strong>
+                </div>
+                <hr class="divider">
+                <div class="result-item neto">
+                    <span>Sueldo Neto :</span>
+                    <strong id="res_neto">$0,00</strong>
+                </div>
+
+                <!-- Detalle de rubros fijos -->
+                <div class="details-box">
+                    <p><strong>Básico:</strong> <span id="res_basico">$0</span></p>
+                    <p><strong>Presentismo:</strong> <span id="res_presentismo">$0</span></p>
+                    <p><strong>Viático:</strong> <span id="res_viatico">$0</span></p>
+                    <p><strong>No Remunerativo:</strong> <span id="res_norem">$0</span></p>
+                </div>
+            </div>
+
+            <button class="btn-restart" onclick="reiniciar()">🔄 Nuevo Cálculo</button>
+        </div>
+
     </div>
 </div>
-    <script src="script.js"></script>
-</body>
 
+<script src="script.js"></script>
+</body>
 </html>
