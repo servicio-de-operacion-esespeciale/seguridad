@@ -1,114 +1,174 @@
-function showTab(tabName) {
-    // Ocultar todos los contenidos
-    const contents = document.querySelectorAll('.tab-content');
-    contents.forEach(content => content.classList.remove('active'));
+// Escala Salarial Oficial CCT 507/07 - CAESI / UPSRA (Julio - Diciembre 2026)
+const escala2026 = {
+    "Julio": {
+        viatico: 505500,
+        noRem: 20000,
+        basicos: {
+            vg: 1001300, vb: 1065500, adm: 1095000, vp: 1128000,
+            ve: 1065500, op: 1065500, gt: 1095000, inst: 1128000, cap: 1001300
+        }
+    },
+    "Agosto": {
+        viatico: 514500,
+        noRem: 30000,
+        basicos: {
+            vg: 1020300, vb: 1086200, adm: 1116600, vp: 1150500,
+            ve: 1086200, op: 1086200, gt: 1116600, inst: 1150500, cap: 1020300
+        }
+    },
+    "Septiembre": {
+        viatico: 524000,
+        noRem: 50000,
+        basicos: {
+            vg: 1037600, vb: 1105700, adm: 1137100, vp: 1172100,
+            ve: 1105700, op: 1105700, gt: 1137100, inst: 1172100, cap: 1037600
+        }
+    },
+    "Octubre": {
+        viatico: 534000,
+        noRem: 60000,
+        basicos: {
+            vg: 1053200, vb: 1123000, adm: 1155100, vp: 1191000,
+            ve: 1123000, op: 1123000, gt: 1155100, inst: 1191000, cap: 1053200
+        }
+    },
+    "Noviembre": {
+        viatico: 545000,
+        noRem: 70000,
+        basicos: {
+            vg: 1069000, vb: 1140500, adm: 1173400, vp: 1210200,
+            ve: 1140500, op: 1140500, gt: 1173400, inst: 1210200, cap: 1069000
+        }
+    },
+    "Diciembre": {
+        viatico: 545000,
+        noRem: 120000,
+        basicos: {
+            vg: 1085000, vb: 1159500, adm: 1194000, vp: 1232300,
+            ve: 1159500, op: 1159500, gt: 1193900, inst: 1232300, cap: 1085000
+        }
+    }
+};
 
-    // Quitar clase active de todas las pestañas
-    const tabs = document.querySelectorAll('.tab');
-    tabs.forEach(tab => tab.classList.remove('active'));
+// Presentismo fijo por categoría
+const presentismoFijo = {
+    vg: 180000,
+    cap: 180000,
+    vb: 195100,
+    ve: 195100,
+    op: 195100,
+    adm: 203000,
+    gt: 203000,
+    vp: 210700,
+    inst: 210700
+};
 
-    // Mostrar el contenido seleccionado
-    document.getElementById(tabName).classList.add('active');
+// Mensajes del Asistente
+const dialogosVigilador = {
+    1: "¡Hola, compa! 👋 Elige el mes a liquidar y tu categoría laboral.",
+    2: "Excelente. Indicame cuántos años de antigüedad tenés y tu opción de descuento.",
+    3: "Entendido. ¿Hiciste horas nocturnas o feriados trabajados en este período?",
+    4: "¡Casi listo! Si tenés horas extras al 50% o 100%, ingresalas a continuación.",
+    5: "¡Aquí está tu cálculo de sueldo final!"
+};
 
-    // Activar la pestaña correspondiente
-    if (event && event.target) {
-        event.target.classList.add('active');
+function nextStep(stepNumber) {
+    document.querySelectorAll('.chat-step').forEach(step => step.classList.remove('active'));
+
+    const currentStep = document.getElementById(`step${stepNumber}`);
+    if (currentStep) currentStep.classList.add('active');
+
+    const speechBubble = document.getElementById('speechBubble');
+    if (speechBubble) {
+        speechBubble.style.opacity = '0';
+        setTimeout(() => {
+            speechBubble.innerText = dialogosVigilador[stepNumber];
+            speechBubble.style.opacity = '1';
+        }, 150);
+    }
+
+    const progressBar = document.getElementById('progressBar');
+    if (progressBar) {
+        progressBar.style.width = `${(stepNumber / 5) * 100}%`;
     }
 }
 
-function calcularSueldo(mes) {
-    const categoria = document.getElementById(`categoria${mes}`).value;
-    const sueldoBasico = document.getElementById(`sueldo_basico${mes}`);
-    const antiguedad = document.getElementById(`antiguedad${mes}`);
-    const presentismo = document.getElementById(`presentismo${mes}`);
-    const horasFeriado = document.getElementById(`horas_feriado${mes}`);
-    const horasNocturnas = document.getElementById(`horas_nocturnas${mes}`);
-    const viatico = document.getElementById(`viatico${mes}`);
-    const horasal50 = document.getElementById(`horas_al50${mes}`);
-    const horasal100 = document.getElementById(`horas_al100${mes}`);
-    const sindicato = document.getElementById(`sindicato${mes}`).value;
+function procesarCalculo() {
+    const mes = document.getElementById('mes').value;
+    const catInput = document.getElementById('categoria').value;
+    const antiguedadVal = parseFloat(document.getElementById('antiguedad').value) || 0;
+    const sindicatoVal = document.getElementById('sindicato').value;
+    const horasNocturnasVal = parseFloat(document.getElementById('horas_nocturnas').value) || 0;
+    const horasFeriadoVal = parseFloat(document.getElementById('horas_feriado').value) || 0;
+    const horasal50Val = parseFloat(document.getElementById('horas_al50').value) || 0;
+    const horasal100Val = parseFloat(document.getElementById('horas_al100').value) || 0;
 
-    let sueldoCategoria, presentismoCategoria, viaticoCategoria;
-    let sumaNoRemunerativaCategoria = 0;
+    const periodo = escala2026[mes];
+    if (!periodo) return;
 
-    // Configuración de valores según la imagen (Enero a Junio 2026)
-    const escala = {
-        "Enero": { viatico: 473800, noRem: 10000, 
-            vg: 867200, vb: 923700, adm: 949700, vp: 978900, cap: 867200, pres_vg: 165000, pres_alt: 178900, pres_adm: 186100, pres_vp: 193100 },
-        "Febrero": { viatico: 473800, noRem: 25000, 
-            vg: 876000, vb: 933600, adm: 960200, vp: 989900, cap: 876000, pres_vg: 165000, pres_alt: 178900, pres_adm: 186100, pres_vp: 193100 },
-        "Marzo": { viatico: 473800, noRem: 25000, 
-            vg: 884800, vb: 942900, adm: 969700, vp: 999800, cap: 884800, pres_vg: 165000, pres_alt: 178900, pres_adm: 186100, pres_vp: 193100 },
-        "Abril": { viatico: 480500, noRem: 25000, 
-            vg: 893650, vb: 952400, adm: 979500, vp: 1010300, cap: 893650, pres_vg: 165000, pres_alt: 178900, pres_adm: 186100, pres_vp: 193100 },
-        "Mayo": { viatico: 487000, noRem: 30000, 
-            vg: 902600, vb: 962300, adm: 989800, vp: 1020600, cap: 902600, pres_vg: 165000, pres_alt: 178900, pres_adm: 186100, pres_vp: 193100 },
-        "Junio": { viatico: 498000, noRem: 70000, 
-            vg: 911650, vb: 974100, adm: 1003000, vp: 1035200, cap: 911650, pres_vg: 165000, pres_alt: 178900, pres_adm: 186100, pres_vp: 193100 }
+    // Mapeo de categorías a claves internas
+    const catMap = {
+        "vigilador_general": "vg",
+        "control_admision": "cap",
+        "vigilador_bombero": "vb",
+        "verificacion_eventos": "ve",
+        "operador_monitoreo": "op",
+        "administrativo": "adm",
+        "guia_tecnico": "gt",
+        "vigilador_principal": "vp",
+        "instalador_seguridad": "inst"
     };
 
-    const data = escala[mes];
-    if (!data) return;
+    const key = catMap[catInput] || "vg";
 
-    viaticoCategoria = data.viatico;
-    sumaNoRemunerativaCategoria = data.noRem;
+    const sueldoBasico = periodo.basicos[key];
+    const presentismo = presentismoFijo[key];
+    const viatico = periodo.viatico;
+    const sumaNoRemunerativa = periodo.noRem;
 
-    switch (categoria) {
-        case "vigilador_general":
-        case "control_admision":
-            sueldoCategoria = data.vg; presentismoCategoria = data.pres_vg; break;
-        case "vigilador_bombero":
-        case "verificacion_eventos":
-        case "operador_monitoreo":
-            sueldoCategoria = data.vb; presentismoCategoria = data.pres_alt; break;
-        case "administrativo":
-        case "guia_tecnico":
-            sueldoCategoria = data.adm; presentismoCategoria = data.pres_adm; break;
-        case "vigilador_principal":
-        case "instalador_seguridad":
-            sueldoCategoria = data.vp; presentismoCategoria = data.pres_vp; break;
-        default:
-            sueldoCategoria = 0; presentismoCategoria = 0; break;
+    // Cálculos variables
+    const sueldoAntiguedad = sueldoBasico * (antiguedadVal / 100);
+    const sueldoFeriado = ((sueldoBasico + presentismo) / 200) * horasFeriadoVal;
+    const sueldoNocturno = ((sueldoBasico + sueldoAntiguedad) * 0.10 / 100) * horasNocturnasVal;
+
+    const valorHoraNormal = (sueldoBasico + presentismo + sueldoAntiguedad) / 200;
+    const sueldoal50 = (valorHoraNormal * 1.5) * horasal50Val;
+    const sueldoal100 = (valorHoraNormal * 2.0) * horasal100Val;
+
+    // Totales Brutos
+    const sueldoBruto = sueldoBasico + sueldoAntiguedad + sueldoFeriado + sueldoNocturno + sueldoal50 + sueldoal100 + presentismo + viatico + sumaNoRemunerativa;
+    const baseRemunerativa = sueldoBasico + sueldoAntiguedad + sueldoFeriado + sueldoNocturno + sueldoal50 + sueldoal100 + presentismo;
+
+    // Descuentos:
+    // 1. Aportes de Ley Obligatorios (17% sobre Base Remunerativa)
+    const descuentoLey = baseRemunerativa * 0.17;
+    let descuentoSindicatoOAporte = 0;
+
+    if (sindicatoVal === "afiliado" || sindicatoVal === "si") {
+        // 20% Total = 17% Ley + 3% Cuota Sindical
+        descuentoSindicatoOAporte = baseRemunerativa * 0.03;
+    } else if (sindicatoVal === "no_afiliado" || sindicatoVal === "no") {
+        // 19% Aprox = 17% Ley + 2% Aporte Solidario sobre Sueldo Básico
+        descuentoSindicatoOAporte = sueldoBasico * 0.02;
+    } else if (sindicatoVal === "solo_ley") {
+        // 17% Total = Solo Aportes de Ley
+        descuentoSindicatoOAporte = 0;
     }
 
-    // Mostrar valores base
-    sueldoBasico.value = formatCurrency(sueldoCategoria);
-    presentismo.value = formatCurrency(presentismoCategoria);
-    viatico.value = formatCurrency(viaticoCategoria);
-    
-    const adicionalNoRemunerativo = document.getElementById(`adicional_no_remunerativo${mes}`);
-    if (adicionalNoRemunerativo) adicionalNoRemunerativo.value = formatCurrency(sumaNoRemunerativaCategoria);
+    const descuentoTotal = descuentoLey + descuentoSindicatoOAporte;
+    const sueldoNeto = sueldoBruto - descuentoTotal;
 
-    // Cálculos
-    const antiguedadValue = parseFloat(antiguedad.value) || 0;
-    const sueldoAntiguedad = sueldoCategoria * (antiguedadValue / 100);
+    // Renderizar en Pantalla
+    document.getElementById('res_bruto').innerText = formatCurrency(sueldoBruto);
+    document.getElementById('res_descuento').innerText = "-" + formatCurrency(descuentoTotal);
+    document.getElementById('res_neto').innerText = formatCurrency(sueldoNeto);
 
-    const horasFeriadoValue = parseFloat(horasFeriado.value) || 0;
-    const sueldoFeriado = ((sueldoCategoria + presentismoCategoria) / 200) * horasFeriadoValue;
+    document.getElementById('res_basico').innerText = formatCurrency(sueldoBasico);
+    document.getElementById('res_presentismo').innerText = formatCurrency(presentismo);
+    document.getElementById('res_viatico').innerText = formatCurrency(viatico);
+    document.getElementById('res_norem').innerText = formatCurrency(sumaNoRemunerativa);
 
-    const horasNocturnasValue = parseFloat(horasNocturnas.value) || 0;
-    const sueldoNocturno = ((sueldoCategoria + sueldoAntiguedad) * 0.1 / 100) * horasNocturnasValue;
-
-    const horasal50Value = parseFloat(horasal50.value) || 0;
-    const valorHoraNormal = (sueldoCategoria + presentismoCategoria + sueldoAntiguedad) / 200;
-    const sueldoal50 = (valorHoraNormal * 1.5) * horasal50Value;
-
-    const horasal100Value = parseFloat(horasal100.value) || 0;
-    const sueldoal100 = (valorHoraNormal * 2) * horasal100Value;
-
-    // Sueldo bruto
-    const sueldoBrutoValue = sueldoCategoria + sueldoAntiguedad + sueldoFeriado + sueldoNocturno + sueldoal50 + sueldoal100 + presentismoCategoria + viaticoCategoria + sumaNoRemunerativaCategoria;
-
-    // Descuento sobre base remunerativa
-    const baseDescuento = sueldoCategoria + sueldoAntiguedad + sueldoFeriado + sueldoNocturno + sueldoal50 + sueldoal100 + presentismoCategoria;
-    const descuento = (sindicato === "si" ? 0.20 : 0.17) * baseDescuento;
-
-    const sueldoNeto = sueldoBrutoValue - descuento;
-
-    // Mostrar resultados
-    document.getElementById(`sueldo_bruto${mes}`).value = formatCurrency(sueldoBrutoValue);
-    document.getElementById(`descuento${mes}`).value = formatCurrency(descuento);
-    document.getElementById(`sueldo_neto${mes}`).value = formatCurrency(sueldoNeto);
+    nextStep(5);
 }
 
 function formatCurrency(amount) {
@@ -119,16 +179,6 @@ function formatCurrency(amount) {
     }).format(amount);
 }
 
-// Event listeners para cálculo automático
-['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'].forEach(mes => {
-    const container = document.getElementById(mes.toLowerCase());
-    if (container) {
-        const inputs = container.querySelectorAll('input, select');
-        inputs.forEach(input => {
-            if (input.id.includes(mes)) {
-                input.addEventListener(input.tagName === 'SELECT' ? "change" : "input", () => calcularSueldo(mes));
-            }
-        });
-    }
-});
-
+function reiniciar() {
+    nextStep(1);
+}
